@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^(application_images)($|/) - [L]
+
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+) index.php?c=$1&f=$2
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)/(([0-9][/])+)$ index.php?c=$1&f=$2&parameters=$3
