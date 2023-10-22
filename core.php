@@ -1,3 +1,4 @@
+<!--DO NOT TOUCH-->
 <?php
     class loader
     {
@@ -6,9 +7,11 @@
             $className = $className . "Controller";
             require_once("controllers/" . $className . ".php");
             if ($parameters == null)
+            {
                 $controller = new $className();
-            else {
-                include("controllers/" . $className . '.php');
+            }
+            else 
+            {
                 $controller = new $controllerName($parameters);
             }
 
@@ -17,15 +20,15 @@
 
         public static function loadView($viewName, $data = null, $returnHTML = false)
         {
-
-
-            if ($returnHTML == true) {
+            if ($returnHTML == true) 
+            {
                 ob_start();
             }
 
             include("views/" . $viewName . ".php");
 
-            if ($returnHTML == true) {
+            if ($returnHTML == true) 
+            {
 
                 $content = ob_get_contents();
                 ob_end_clean();
@@ -33,15 +36,17 @@
             };
         }
 
-        public static function loadModel($className, $parameters = null)
+        public static function loadModel($modelName, $parameters = null)
         {
-            $className = $className . "Model";
-            require_once("models/" . $className . ".php");
-            if ($parameters == null) {
-                $model = new $className();
-            } else {
-                include("controllers/" . $className . '.php');
-                $model = new $className($parameters);
+            $modelName = $modelName . "Model";
+            require_once("models/" . $modelName . ".php");
+            if ($parameters == null) 
+            {
+                $model = new $modelName();
+            } 
+            else 
+            {
+                $model = new $modelName($parameters);
             }
 
             return $model;

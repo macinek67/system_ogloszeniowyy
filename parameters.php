@@ -1,5 +1,5 @@
+<!--GLOBAL VARIABLES-->
+<!--DO NOT TOUCH-->
 <?php
-
-define("PRODUCTS_PER_PAGE", 24);
-
+    define("ZERO", 0);
 ?>

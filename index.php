@@ -1,12 +1,17 @@
+<!--DO NOT TOUCH-->
 <?php
     require_once("core.php");
     $url = explode("/", $_SERVER['REDIRECT_URL']);
-    $controllerName = $url[3];
-    $functionName = $url[4];
+    $controllerName = $url[2];
+    $functionName = $url[3];
     $parameters = [];
-    for ($i = 5; $i < count($url); $i++)
-        if($url[$i] != "")
+    for ($i = 4; $i < count($url); $i++)
+    {
+        if($url[$i] != null)
+        {
             array_push($parameters, $url[$i]);
+        }
+    }
 
     if(isset($_POST))
     {
@@ -18,11 +23,11 @@
 
     if(count(($parameters)) == 0)
     {
-        array_push($parameters, "");
-        array_push($parameters, "");
+        array_push($parameters, null);
+        array_push($parameters, null);
     } 
     else if(count(($parameters)) == 1)
-        array_push($parameters, "");
+        array_push($parameters, null);
     
 
     $controller = loader::loadController($controllerName);
