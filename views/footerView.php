@@ -1,6 +1,6 @@
 <footer class="container-fluid">
   <div class="container">
-    <div class="row text-xl-start text-lg-start text-md-start text-sm-start text-center">
+    <div class="row text-xl-start text-lg-start text-md-start text-sm-start text-center pb-xl-0 pb-lg-0 pb-md-5 pb-sm-5 pb-5 mb-xl-0 mb-lg-0 mb-md-5 mb-sm-5 mb-5">
 
       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
         <div class="col me-3 mt-5">
