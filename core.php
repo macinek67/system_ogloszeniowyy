@@ -18,14 +18,14 @@
             return $controller;
         }
 
-        public static function loadView($viewName, $data = null, $returnHTML = false)
+        public static function loadView($folderName, $viewName, $data = null, $returnHTML = false)
         {
-            if ($returnHTML == true) 
+            if ($returnHTML == true)
             {
                 ob_start();
             }
 
-            include("views/" . $viewName . ".php");
+            include("views/" . $folderName . "/" . $viewName . ".php");
 
             if ($returnHTML == true) 
             {

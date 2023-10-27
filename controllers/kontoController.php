@@ -1,14 +1,15 @@
 <?php
-    require_once("models/accountModel.php");
+    require_once("models/userModel.php");
 
     class kontoController
     {
         public function profil()
         {
-            $data["headerDesktop"] = loader::loadView("headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobileView", null, true);
-            $data["footer"] = loader::loadView("footerView", null, true);
-            loader::loadView("pageView", $data);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $data["personalData"] = loader::loadView("profile", "personalDataView", null, true);
+            $data["footer"] = loader::loadView("footer", "footerView", null, true);
+            loader::loadView("profile", "profileView", $data);
         }
     }
 ?>
