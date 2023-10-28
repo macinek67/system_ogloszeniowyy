@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Paź 2023, 16:09
+-- Czas generowania: 28 Paź 2023, 18:06
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `login` varchar(25) NOT NULL,
+  `email` varchar(35) NOT NULL,
   `password` varchar(25) NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`user_id`),
@@ -170,7 +170,6 @@ CREATE TABLE IF NOT EXISTS `user_data` (
   `name` varchar(25) NOT NULL,
   `surname` varchar(25) NOT NULL,
   `birth_date` date NOT NULL,
-  `email` varchar(50) NOT NULL,
   `telephone_number` decimal(9,0) NOT NULL,
   `pfp` blob NOT NULL,
   `city` varchar(35) NOT NULL,
