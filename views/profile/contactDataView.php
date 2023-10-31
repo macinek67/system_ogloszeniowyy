@@ -17,7 +17,7 @@
             <select id="daySelect" class="col-xl-2 col-lg-2 col-md-2 col-3" disabled></select>
             <select id="monthSelect" class="col-xl-2 col-lg-2 col-md-2 col-4" disabled></select>
             <select id="yearSelect" class="col-xl-2 col-lg-2 col-md-2 col-3" disabled></select>
-            <div class="form-text">Aktualna data: (nie wybrano)</div>
+            <div class="form-text">Aktualna data:</div>
         </div>
         <div class="col pb-3 pt-3">
             <button id="contactDataEditButton" type="button" class="btn btn-secondary rounded-0 me-1" onclick="editContactData()">Edytuj</button>

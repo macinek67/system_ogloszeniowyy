@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 28 Paź 2023, 18:06
+-- Czas generowania: 31 Paź 2023, 13:49
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -167,14 +167,14 @@ CREATE TABLE IF NOT EXISTS `user_course` (
 CREATE TABLE IF NOT EXISTS `user_data` (
   `user_data_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `surname` varchar(25) NOT NULL,
-  `birth_date` date NOT NULL,
-  `telephone_number` decimal(9,0) NOT NULL,
-  `pfp` blob NOT NULL,
-  `city` varchar(35) NOT NULL,
-  `currnent_occupation` varchar(75) NOT NULL,
-  `summary` text NOT NULL,
+  `name` varchar(25) DEFAULT NULL,
+  `surname` varchar(25) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `telephone_number` decimal(9,0) DEFAULT NULL,
+  `pfp` blob DEFAULT NULL,
+  `city` varchar(35) DEFAULT NULL,
+  `currnent_occupation` varchar(75) DEFAULT NULL,
+  `summary` text DEFAULT NULL,
   PRIMARY KEY (`user_data_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `user_language` (
 CREATE TABLE IF NOT EXISTS `user_link` (
   `link_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `name` enum('Linked','GitHub','Facebook','') NOT NULL,
+  `name` enum('Portfolio','Strona osobista','Strona firmowa','Projekt','Link do profilu społecznościowego','Inny') NOT NULL,
   PRIMARY KEY (`link_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `user_saved` (
 CREATE TABLE IF NOT EXISTS `user_skill` (
   `skill_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `name` enum(' obsługa pakietu xxx','prawo jazdy kategorii xxx','operator maszyn CNC','licencja na helikopter') NOT NULL,
+  `name` varchar(50) NOT NULL,
   PRIMARY KEY (`skill_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
