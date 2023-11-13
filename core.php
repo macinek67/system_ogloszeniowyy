@@ -5,7 +5,9 @@
         public static function loadController($className, $parameters = null)
         {
             $className = $className . "Controller";
+            
             require_once("controllers/" . $className . ".php");
+            
             if ($parameters == null)
             {
                 $controller = new $className();

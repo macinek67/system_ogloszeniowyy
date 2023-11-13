@@ -19,5 +19,6 @@
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
             loader::loadView("profile", "profileView", $data);
         }
+
     }
 ?>
