@@ -23,9 +23,9 @@
     <!--Content-->
     <div class="container-lg mt-4 mb-4">
         <div class="text-center col-md-4 col-sm-6 col-12 m-auto">
-            <p class="h2 text-info-emphasis">Ups... coś poszło nie tak.</p>
+            <p class="h2 text-primary-emphasis">Ups... coś poszło nie tak.</p>
             <img class="w-100" src="http://localhost/system_ogloszeniowy/application_images/invalidPageImage.svg">
-            <p class="h6 pt-5">Strona nie istnieje, wróć na <a href="#" class="fw-bold text-primary text-decoration-none">stronę główną.</a></p>
+            <p class="h6 pt-5">Strona nie istnieje, wróć na <a href="http://localhost/system_ogloszeniowy/praca/glowna" class="fw-bold text-primary text-decoration-none">stronę główną.</a></p>
         </div>
     </div>
     

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 31 Paź 2023, 13:49
+-- Czas generowania: 14 Lis 2023, 20:42
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   `subcategory_id` int(10) UNSIGNED DEFAULT NULL,
   `position_name` varchar(75) NOT NULL,
   `position_level` enum('Praktykant / Stażysta','Asystent','Młodszy specjalista (Junior)','Specjalista (Mid/Regular)','Starszy Specjalista (Senior)','Ekspert','Kierownik / koordynator','Menedżer','Dyrektor','Prezes','Pracownik fizyczny') NOT NULL,
+  `city` varchar(35) NOT NULL,
   `contract_type` enum('Umowa o pracę','Umowa o dzieło','Umowa zlecenie','Kontrakt B2B','Umowa na zastępstwo','Umowa agencyjna','Umowa o pracę tymczasową','Umowa o staż / praktyki') NOT NULL,
   `working_time` enum('Część etatu','Dodatkowa / tymczasowa','Pełny etat','') NOT NULL,
   `work_type` enum('Praca stacjonarna','Praca hybrydowa','Praca zdalna','Praca mobilna') NOT NULL,

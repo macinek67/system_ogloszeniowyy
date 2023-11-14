@@ -4,14 +4,14 @@
 
       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
         <div class="col me-3 mt-5">
-          <p href="" class="h3 text-info-emphasis">Dla kandydatów</p>
+          <p href="" class="h3 text-primary-emphasis">Dla kandydatów</p>
           <p><a href="#" class="text-black">Pomoc</a></p>
           <p><a href="#" class="text-black">Pracuj w grupie Pracuj</a></p>
           <p><a href="#" class="text-black">Festiwal Pracy JOBICON</a></p>
           <p><a href="#" class="text-black">Urzędy pracy</a></p>
         </div>
         <div class="col me-3 mt-5">
-          <p href="" class="h3 text-info-emphasis">Narzędzia</p>
+          <p href="" class="h3 text-primary-emphasis">Narzędzia</p>
           <p><a href="#" class="text-black">Kreator CV</a></p>
           <p><a href="#" class="text-black">Porady zawodowe</a></p>
           <p><a href="#" class="text-black">Kalkulator zarobków</a></p>
@@ -22,7 +22,7 @@
 
       <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
         <div class="col me-3 mt-5">
-          <p href="" class="h3 text-info-emphasis">Dla firm</p>
+          <p href="" class="h3 text-primary-emphasis">Dla firm</p>
           <p><a href="#" class="text-black">Dodaj ogłoszenie</a></p>
           <p><a href="#" class="text-black">Konto pracodawcy</a></p>
           <p><a href="#" class="text-black">Pomoc dla firm</a></p>
@@ -34,7 +34,7 @@
       <div class="col-xl-6 col-lg-6 col-md-12 d-xl-flex d-lg-flex d-md-flex d-sm-flex">
         <div class="w-100">
           <div class="col me-3 mt-5">
-            <p href="" class="h3 text-info-emphasis">Grupa pracuj</p>
+            <p href="" class="h3 text-primary-emphasis">Grupa pracuj</p>
             <p><a href="#" class="text-black">O nas</a></p>
             <p><a href="#" class="text-black">Centrum Prasowe</a></p>
             <p><a href="#" class="text-black">Reklama</a></p>
@@ -45,7 +45,7 @@
 
         <div class="w-100">
           <div class="col me-3 mt-5">
-            <p href="" class="h3 text-info-emphasis">Pobierz aplikacje</p>
+            <p href="" class="h3 text-primary-emphasis">Pobierz aplikacje</p>
             <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/appStoreIcon.png"></a></p>
             <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/googlePlayIcon.png"></a></p>
             <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/appGalleryIcon.png"></a></p>

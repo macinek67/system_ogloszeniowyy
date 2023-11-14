@@ -21,17 +21,8 @@
     ?>
 
     <!--Content-->
-    <div class="container-lg mt-5 mb-4 column-gap-4 d-lg-flex">
-        <div class="col-lg-8 col-12">
-            <?php
-                echo $data["mainPanel"];
-            ?>
-        </div>
-        <div class="col-lg-4">
-            <?php
-                echo $data["sidePanel"];
-            ?>
-        </div>
+    <div class="container-lg mt-4 mb-4">
+        Soon...
     </div>
     
     <!--Footer-->
