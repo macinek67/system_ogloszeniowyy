@@ -1,4 +1,4 @@
-<div class="bg-white p-2 ps-sm-4 rounded-bottom-4">
+<div class="bg-white p-2 ps-sm-4 rounded-bottom-4 pb-4">
 
     <div class="col-12 d-sm-flex d-block">
 

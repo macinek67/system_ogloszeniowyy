@@ -13,7 +13,7 @@
 
 • Widoki:
 - ✅ widok profilu uzytkownika (http://localhost/system_ogloszeniowy/konto/profil)
-- 🕔 widok ogloszenia pracy (http://localhost/system_ogloszeniowy/praca/oferta)
+- ✅ widok ogloszenia pracy (http://localhost/system_ogloszeniowy/praca/oferta)
 - ❌ widok strony glownej (http://localhost/system_ogloszeniowy/praca/glowna)
 
 • Backend:
