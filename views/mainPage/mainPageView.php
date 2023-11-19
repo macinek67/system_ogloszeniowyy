@@ -10,6 +10,10 @@
         body {
             background-color: #f2f2f2;
         }
+
+        #strefa_ofert {
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
@@ -22,7 +26,16 @@
 
     <!--Content-->
     <div class="container-lg mt-4 mb-4">
-        Soon...
+        <div>
+            <?php
+                echo $data["headerInfo"];
+            ?>
+        </div>
+        <div id="strefa_ofert">
+            <?php
+                echo $data["offers"];
+            ?>
+        </div>
     </div>
     
     <!--Footer-->

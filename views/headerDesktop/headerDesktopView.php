@@ -1,4 +1,4 @@
-<header id="headerDesktop" class="container-fluid bg-light shadow">
+<header id="headerDesktop" class="container-fluid bg-light shadow-sm">
     <div class="container-xl">
         <div class="row pt-2 pb-2">
             <div class="col-xl-2 col-lg-2 col-md-12 col-12 text-center">

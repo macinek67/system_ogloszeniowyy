@@ -1,7 +1,7 @@
 <form class="bg-white" method="post" action="">
 
     <div class="col bg-light bg-gradient ps-3 pt-2">
-        <label class="h5 text-info-emphasis w-75">Kursy, szkolenia, certyfikaty</label>
+        <label class="h5 text-primary-emphasis w-75">Kursy, szkolenia, certyfikaty</label>
         <a onclick="ShowUserSection()" class="float-end me-2 w-10 text-black">
             <i class="bi bi-plus-lg"></i><label class="h6 ps-1 d-xl-inline d-lg-inline d-md-inline d-sm-inline d-none">Dodaj</label>
         </a>

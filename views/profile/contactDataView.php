@@ -1,6 +1,6 @@
 <form class="bg-white" method="post" action="">
     <div class="col bg-light bg-gradient">
-        <label class="h5 ps-3 pt-2 text-info-emphasis">Dane kontaktowe</label>
+        <label class="h5 ps-3 pt-2 text-primary-emphasis">Dane kontaktowe</label>
     </div>
     <div class="col bg-white p-2 ps-3">
         <div class="col">

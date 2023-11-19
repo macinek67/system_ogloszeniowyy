@@ -25,7 +25,8 @@
         {
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-
+            $data["headerInfo"] = loader::loadView("mainPage", "headerInfoView", null, true);
+            $data["offers"] = loader::loadView("mainPage", "offersView", null, true);
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
             loader::loadView("mainPage", "mainPageView", $data);
         }

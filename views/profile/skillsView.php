@@ -1,7 +1,7 @@
 <form class="bg-white" method="post" action="">
 
     <div class="col bg-light bg-gradient ps-3 pt-2">
-        <label class="h5 text-info-emphasis w-75">Umiejętności</label>
+        <label class="h5 text-primary-emphasis w-75">Umiejętności</label>
     </div>
 
     <div class="userSectionEditVisible col p-3">
