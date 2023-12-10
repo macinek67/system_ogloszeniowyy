@@ -27,6 +27,7 @@
                 ob_start();
             }
 
+            require_once("parameters.php");
             include("views/" . $folderName . "/" . $viewName . ".php");
 
             if ($returnHTML == true) 

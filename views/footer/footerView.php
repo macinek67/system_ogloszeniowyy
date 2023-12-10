@@ -46,9 +46,9 @@
         <div class="w-100">
           <div class="col me-3 mt-5">
             <p href="" class="h3 text-primary-emphasis">Pobierz aplikacje</p>
-            <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/appStoreIcon.png"></a></p>
-            <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/googlePlayIcon.png"></a></p>
-            <p><a href="#" class="text-black"><img class="w-50" src="http://localhost/system_ogloszeniowy/application_images/appGalleryIcon.png"></a></p>
+            <p><a href="#" class="text-black"><img class="w-50" src="<?php echo IMAGE_URL; ?>appStoreIcon.png"></a></p>
+            <p><a href="#" class="text-black"><img class="w-50" src="<?php echo IMAGE_URL; ?>googlePlayIcon.png"></a></p>
+            <p><a href="#" class="text-black"><img class="w-50" src="<?php echo IMAGE_URL; ?>appGalleryIcon.png"></a></p>
           </div>
         </div>
       </div>

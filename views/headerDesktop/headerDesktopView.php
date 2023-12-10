@@ -2,7 +2,7 @@
     <div class="container-xl">
         <div class="row pt-2 pb-2">
             <div class="col-xl-2 col-lg-2 col-md-12 col-12 text-center">
-                <a href="http://localhost/system_ogloszeniowy/praca/glowna"><img class="h-100" src="http://localhost/system_ogloszeniowy/application_images/logo.webp"></a>
+                <a href="http://localhost/system_ogloszeniowy/praca/glowna"><img class="h-100" src="<?php echo IMAGE_URL; ?>logo.webp"></a>
             </div>
             <div class="col-xl-6 col-lg-6 d-xl-block d-lg-block d-none pt-1">
                 <button class="border-0 bg-transparent align-middle" onfocus="rozwin()" onfocusout="zwin()">Oferty pracy<i class="align-middle ms-1 bi bi-caret-down-fill"></i></button>

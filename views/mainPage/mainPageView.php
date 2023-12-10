@@ -31,6 +31,11 @@
                 echo $data["headerInfo"];
             ?>
         </div>
+        <div class="mt-4 m-auto">
+            <?php
+                echo $data["searchSection"];
+            ?>
+        </div>
         <div id="strefa_ofert">
             <?php
                 echo $data["offers"];

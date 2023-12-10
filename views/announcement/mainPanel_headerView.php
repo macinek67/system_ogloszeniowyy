@@ -2,7 +2,7 @@
     <div class="d-xl-flex d-block p-sm-4 p-2">
         <div class="d-sm-flex d-block">
             <div class="col-2">
-                <img src="http://localhost/system_ogloszeniowy/application_images/announcementLogoTest.jpg">
+                <img src="<?php echo IMAGE_URL; ?>announcementLogoTest.jpg">
             </div>
             <div class="col-xl-9 col-lg-6 col-sm-10 col-12 ms-lg-4 ms-md-0 ms-sm-3 ms-0">
                 <p class="h4 fw-bolder text-primary-emphasis">Programista (DevOps - System Pasywnej Lokacji)</p>
