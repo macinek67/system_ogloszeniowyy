@@ -19,7 +19,7 @@
 <style>
     #headerDesktop button:hover {
         text-decoration: underline;
-        color: #113e4d;
+        color: #0049a8;
     }
 </style>
 <script>
