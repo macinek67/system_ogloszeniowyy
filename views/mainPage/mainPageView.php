@@ -42,9 +42,16 @@
             ?>
         </div>
     </div>
+
     <div id="strefa_firm" class="pt-5">
         <?php
             echo $data["companies"];
+        ?>
+    </div>
+
+    <div id="strefa_kategorii" class="pt-5">
+        <?php
+            echo $data["categories"];
         ?>
     </div>
     

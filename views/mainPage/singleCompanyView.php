@@ -12,7 +12,7 @@
 
 
 <style>
-    .companyContainer {
+    .companyContainer, .bestCategoryContainer {
         height: 250px;
         min-width: 264px;
     }

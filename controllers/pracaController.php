@@ -44,6 +44,10 @@
             $companies_data["companiesList"] = loader::loadView("mainPage", "singleCompanyView", null, true);
             $data["companies"] = loader::loadView("mainPage", "bestCompaniesListView", $companies_data, true);
 
+
+            $categories_data["categoryList"] = loader::loadView("mainPage", "singleCategoryView", null, true);
+            $data["categories"] = loader::loadView("mainPage", "bestCategoriesView", $categories_data, true);
+
             
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
 
