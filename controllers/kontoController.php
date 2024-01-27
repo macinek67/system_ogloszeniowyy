@@ -7,6 +7,7 @@
         {
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
             $data["personalData"] = loader::loadView("profile", "personalDataView", null, true);
             $data["contactData"] = loader::loadView("profile", "contactDataView", null, true);
             $data["occupationSummary"] = loader::loadView("profile", "occupationSummaryView", $parameters, true);
@@ -20,5 +21,14 @@
             loader::loadView("profile", "profileView", $data);
         }
 
+        public function zapisane($parameters)
+        {
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
+            $data["offersList"] = loader::loadView("saved", "singleSavedView", null, true);
+            $data["footer"] = loader::loadView("footer", "footerView", null, true);
+            loader::loadView("saved", "savedView", $data);
+        }
     }
 ?>

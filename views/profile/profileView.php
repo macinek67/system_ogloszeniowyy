@@ -37,6 +37,12 @@
 
         <div>
             <?php
+                echo $data["switchView"];
+            ?>
+        </div>
+
+        <div class="mt-4">
+            <?php
                 echo $data["personalData"];
                 echo $data["contactData"];
             ?>

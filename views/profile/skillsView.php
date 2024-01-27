@@ -1,4 +1,4 @@
-<form class="bg-white" method="post" action="">
+<form class="bg-white shadow-sm" method="post" action="">
 
     <div class="col bg-light bg-gradient ps-3 pt-2">
         <label class="h5 text-primary-emphasis w-75">Umiejętności</label>

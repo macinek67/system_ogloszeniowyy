@@ -1,4 +1,4 @@
-<form class="bg-white" method="post" action="">
+<form class="bg-white shadow-sm" method="post" action="">
     <div class="d-xl-flex d-lg-flex d-md-flex d-block">
         <div class="col-xl-3 col-lg-3 col-md-3 col-4 m-auto pt-3 pb-3">
             <label class="w-100" for="pfpInput">
