@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pracuj.pl • Zapisane ogłoszenia</title>
+    <title>Pracuj.pl • Zaaplikowane ogłoszenia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
     <style>
@@ -31,8 +31,8 @@
 
         <div class="mt-4 bg-white shadow-sm">
             <div class="p-3">
-                <p class="h3 text-primary-emphasis fw-bolder">Zapisane ogłoszenia</p>
-                <small class="h6 text-black fw-bolder">• Przeglądaj swoje wcześniej zapisane ogłoszenia i dodawaj nowe, aby o niczym nie zapomnieć!</small>
+                <p class="h3 text-primary-emphasis fw-bolder">Zaaplikowane ogłoszenia</p>
+                <small class="h6 text-black fw-bolder">• Przeglądaj ogłoszenia do których wcześniej zaaplikowałeś!</small>
             </div>
             <hr>
             <div class="d-md-flex p-3">

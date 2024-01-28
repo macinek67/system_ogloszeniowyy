@@ -30,5 +30,15 @@
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
             loader::loadView("saved", "savedView", $data);
         }
+
+        public function zaaplikowane($parameters)
+        {
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
+            $data["offersList"] = loader::loadView("applied", "singleAppliedView", null, true);
+            $data["footer"] = loader::loadView("footer", "footerView", null, true);
+            loader::loadView("applied", "appliedView", $data);
+        }
     }
 ?>

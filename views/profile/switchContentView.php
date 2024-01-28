@@ -1,5 +1,5 @@
-<form class="bg-transparent rounded-5 shadow-sm" method="post" action="">
-    <div class="bg-light bg-gradient ps-3 pe-3 pt-2 d-sm-flex pb-2 rounded-5">
+<form class="bg-transparent shadow-sm" method="post" action="">
+    <div class="bg-light bg-gradient ps-3 pe-3 pt-2 d-sm-flex pb-2">
         <div class="col-sm col-12 bg-dark-subtle text-center pb-1 tabView me-2 rounded-5 shadow-sm">
             <a href="<?php echo ROOT_URL . "konto/profil"; ?>" class="h4 text-primary-emphasis fw-bolder">Profil kandydata</a>
         </div>
