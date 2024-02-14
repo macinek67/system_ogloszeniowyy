@@ -55,5 +55,23 @@
             loader::loadView("mainPage", "mainPageView", $data);
         }
 
+        public function szukaj($parameters)
+        {
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+
+            $data["filters"] = loader::loadView("searchPage", "filtersView", null, true);
+
+            $data["sortPanel"] = loader::loadView("searchPage", "sortPanelView", null, true);
+
+            $data["searchedOffersList"] = loader::loadView("searchPage", "singleSearchedOfferView", null, true);
+
+            $data["searchPagination"] = loader::loadView("searchPage", "searchPaginationView", null, true);
+
+            $data["footer"] = loader::loadView("footer", "footerView", null, true);
+
+            loader::loadView("searchPage", "searchPageView", $data);
+        }
+
     }
 ?>

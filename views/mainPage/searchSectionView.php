@@ -38,7 +38,7 @@
     .btn-alt:active,
     .btn-alt:focus,
     .btn-alt.active {
-    background: #025fd9;
-    color: #ffffff;
-}
+        background: #025fd9;
+        color: #ffffff;
+    }
 </style>
