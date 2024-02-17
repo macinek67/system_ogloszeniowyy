@@ -13,8 +13,8 @@
             <p class="mt-1 col-2 text-center">lub</p>
             <hr class="col-5">
         </div>
-        <div>
-            <button class="btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
+        <div class="mt-2">
+            <button class="diffLoginMethods btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
                 <div class="h-75 col-2">
                     <img class="h-100" src="<?php echo IMAGE_URL; ?>googleIcon.png">
                 </div>
@@ -22,7 +22,7 @@
                     <p class="h6 fw-bolder mb-0">Kontynuuj z Google</p>
                 </div>
             </button>
-            <button class="mt-2 btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
+            <button class="diffLoginMethods mt-2 btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
                 <div class="h-75 col-2">
                     <img class="h-100" src="<?php echo IMAGE_URL; ?>facebookIcon.png">
                 </div>
