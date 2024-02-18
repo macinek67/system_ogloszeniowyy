@@ -24,7 +24,7 @@
                     <label class="ms-2">Chcę otrzymywać mailem informacje marketingowe o klientach Pracuj.pl</label>
                 </div>
             </div>
-            <button class="btn-alt border-0 rounded-5 mt-4 p-3 w-100"><label class="h5 fw-bolder mb-0">Utwórz konto</i></label></button>
+            <button type="button" class="btn-alt border-0 rounded-5 mt-4 p-3 w-100"><label class="h5 fw-bolder mb-0">Utwórz konto</i></label></button>
         </div>
     </div>
 </form>

@@ -6,7 +6,7 @@
         </div>
         <div class="pt-3">
             <input required type="email" class="form-control pt-2 pb-2" placeholder="Adres e-mail">
-            <button class="btn-alt border-0 rounded-5 mt-3 p-3 w-100"><label class="h5 fw-bolder mb-0">Dalej <i class="bi bi-arrow-right ms-2"></i></label></button>
+            <button type="button" class="btn-alt border-0 rounded-5 mt-3 p-3 w-100"><label class="h5 fw-bolder mb-0">Dalej <i class="bi bi-arrow-right ms-2"></i></label></button>
         </div>
         <div class="mt-4 mb-1 d-flex">
             <hr class="col-5">
@@ -14,7 +14,7 @@
             <hr class="col-5">
         </div>
         <div class="mt-2">
-            <button class="diffLoginMethods btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
+            <button type="button" class="diffLoginMethods btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
                 <div class="h-75 col-2">
                     <img class="h-100" src="<?php echo IMAGE_URL; ?>googleIcon.png">
                 </div>
@@ -22,7 +22,7 @@
                     <p class="h6 fw-bolder mb-0">Kontynuuj z Google</p>
                 </div>
             </button>
-            <button class="diffLoginMethods mt-2 btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
+            <button type="button" class="diffLoginMethods mt-2 btn btn-outline-alt rounded-5 w-100 d-flex align-items-center">
                 <div class="h-75 col-2">
                     <img class="h-100" src="<?php echo IMAGE_URL; ?>facebookIcon.png">
                 </div>
