@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2024 at 12:34 PM
+-- Generation Time: Feb 19, 2024 at 03:49 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -235,17 +235,47 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `login_session`
+--
+
+CREATE TABLE IF NOT EXISTS `login_session` (
+  `session_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `code` text NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `sign_type` enum('In','Up','','') NOT NULL,
+  `start_date` datetime NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `login_session`
+--
+
+INSERT INTO `login_session` (`session_id`, `code`, `email`, `sign_type`, `start_date`) VALUES
+(46, '1f8db700e6a4375d6f789b42b3c359a2557451485e08', 'xd@gmail.com', 'In', '2024-02-19 15:47:53');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `email` varchar(35) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` text NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `email`, `password`, `role_id`) VALUES
+(3, 'tak@gmail.com', '$2y$10$SvpIfsvrX8QtCI7CjC00hOQf.qzzRHHmonOMxmLFshLW3UGzgPAvq', 2),
+(6, 'xd@gmail.com', '$2y$10$CgPJaZH9M6X/Hsa0aH9dXecruiNvcZGK3gd8.F1OTEBOVSi89mVbW', 2);
 
 -- --------------------------------------------------------
 
@@ -494,6 +524,15 @@ ALTER TABLE `user_saved`
 --
 ALTER TABLE `user_skill`
   ADD CONSTRAINT `user_skill_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `Delete_Older_Than_10_mins_login_sessions` ON SCHEDULE EVERY 1 SECOND STARTS '2024-02-19 14:45:07' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM login_session
+    WHERE start_date < DATE_SUB(NOW(), INTERVAL 10 MINUTE)$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
