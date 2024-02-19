@@ -16,16 +16,18 @@
 
         public function zarejestruj($parameters)
         {
-            if(!isset($_POST["email"]))
+            $um = new userModel();
+            if($parameters[0] == "" || !($um->verifySessionCode($parameters[0], "Up")))
             {
-                $this->email();
+                header("Location: " . ROOT_URL . "login/email");
                 return;
             }
 
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
 
-            $content_data["email"] = $_POST["email"];
+            $content_data["email"] = $um->getSessionEmail($parameters[0], "Up");
+            $content_data["code"] = $parameters[0];
             $data["content"] = loader::loadView("loginPage", "signUpView", $content_data, true);
 
             loader::loadView("loginPage", "loginView", $data);
@@ -33,16 +35,19 @@
 
         public function zaloguj($parameters)
         {
-            if(!isset($_POST["email"]))
+            $um = new userModel();
+            if($parameters[0] == "" || !($um->verifySessionCode($parameters[0], "In")))
             {
-                $this->email();
+                header("Location: " . ROOT_URL . "login/email");
                 return;
             }
 
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
 
-            $data["content"] = loader::loadView("loginPage", "signInView", null, true);
+            $content_data["email"] = $um->getSessionEmail($parameters[0], "In");
+            $content_data["code"] = $parameters[0];
+            $data["content"] = loader::loadView("loginPage", "signInView", $content_data, true);
 
             loader::loadView("loginPage", "loginView", $data);
         }
@@ -60,27 +65,44 @@
 
             if(count($user) == 0)
             {
-                $this->zarejestruj($_POST["email"]);
+                $um->createLoginSession($_POST["email"], "Up");
+                $session_code = $um->getSessionCode($_POST["email"]);
+                header("Location: " . ROOT_URL . "login/zarejestruj/" . $session_code);
                 return;
             }
 
             if(count($user) > 0)
             {
-                $this->zaloguj($_POST["email"]);
+                $um->createLoginSession($_POST["email"], "In");
+                $session_code = $um->getSessionCode($_POST["email"]);
+                header("Location: " . ROOT_URL . "login/zaloguj/" . $session_code);
                 return;
             }
         }
 
         public function utworz_konto($parameters)
         {
-            if(!isset($_POST["email"]) || !isset($_POST["password"]))
+            $um = new userModel();
+
+            if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["code"]) || !($um->verifySessionCode($_POST["code"], "Up")))
             {
-                $this->email();
+                header("Location: " . ROOT_URL . "login/email");
                 return;
             }
 
+            $um->signUpUserAndDeleteSession($_POST["email"], $_POST["password"], $_POST["code"]);
+        }
+
+        public function zaloguj_konto($parameters)
+        {
             $um = new userModel();
-            $um->insertUser($_POST["email"], $_POST["password"]);
+
+            if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["code"]) || !($um->verifySessionCode($_POST["code"], "In")))
+            {
+                header("Location: " . ROOT_URL . "login/email");
+                return;
+            }
+            $um->signInUserAndDeleteSession($_POST["email"], $_POST["password"], $_POST["code"]);
         }
 
     }

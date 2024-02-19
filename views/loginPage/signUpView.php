@@ -26,6 +26,7 @@
                 </div>
             </div>
             <input type="hidden" name="email" value="<?php echo $data["email"]; ?>">
+            <input type="hidden" name="code" value="<?php echo $data["code"]; ?>">
             <button onclick="checkIfPasswordIsValid()" type="button" class="btn-alt border-0 rounded-5 mt-4 p-3 w-100"><label class="h5 fw-bolder mb-0">Utwórz konto</i></label></button>
         </div>
     </div>
