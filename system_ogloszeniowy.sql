@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2024 at 03:49 PM
+-- Generation Time: Mar 03, 2024 at 04:21 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -32,15 +32,19 @@ USE `system_ogloszeniowy`;
 CREATE TABLE IF NOT EXISTS `announcement` (
   `announcement_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `company_id` int(10) UNSIGNED NOT NULL,
+  `localization_link` text NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
-  `subcategory_id` int(10) UNSIGNED DEFAULT NULL,
+  `subcategory_id` int(10) UNSIGNED NOT NULL,
   `position_name` varchar(75) NOT NULL,
+  `earnings` varchar(15) NOT NULL,
   `position_level_id` int(10) UNSIGNED NOT NULL,
   `city` varchar(35) NOT NULL,
   `contract_type_id` int(10) UNSIGNED NOT NULL,
   `working_time_id` int(10) UNSIGNED NOT NULL,
   `work_type_id` int(10) UNSIGNED NOT NULL,
-  `end_date` date NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `theme_color` varchar(15) NOT NULL,
   PRIMARY KEY (`announcement_id`),
   KEY `company_id` (`company_id`),
   KEY `category_id` (`category_id`),
@@ -49,7 +53,14 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   KEY `contract_type_id` (`contract_type_id`),
   KEY `working_time_id` (`working_time_id`),
   KEY `work_type_id` (`work_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`announcement_id`, `company_id`, `localization_link`, `category_id`, `subcategory_id`, `position_name`, `earnings`, `position_level_id`, `city`, `contract_type_id`, `working_time_id`, `work_type_id`, `start_date`, `end_date`, `theme_color`) VALUES
+(2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9500-11000', 4, 'Kraków', 1, 3, 2, '2024-02-21 12:37:43', '2024-02-22 23:59:00', 'primary');
 
 -- --------------------------------------------------------
 
@@ -75,7 +86,14 @@ CREATE TABLE IF NOT EXISTS `announcement_category` (
   `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement_category`
+--
+
+INSERT INTO `announcement_category` (`category_id`, `name`) VALUES
+(1, 'Programowanie');
 
 -- --------------------------------------------------------
 
@@ -172,7 +190,14 @@ CREATE TABLE IF NOT EXISTS `announcement_subcategory` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`subcategory_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement_subcategory`
+--
+
+INSERT INTO `announcement_subcategory` (`subcategory_id`, `category_id`, `name`) VALUES
+(1, 1, 'Programowanie aplikacji webowych');
 
 -- --------------------------------------------------------
 
@@ -225,12 +250,19 @@ INSERT INTO `announcement_work_type` (`work_type_id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `company` (
   `company_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `adress` varchar(75) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `short_name` varchar(20) NOT NULL,
+  `logo` text NOT NULL,
   `localization_link` text NOT NULL,
-  `description` text NOT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`company_id`, `name`, `short_name`, `logo`, `localization_link`) VALUES
+(1, 'PIT-RADWAR Spółka Arytmetyczna', 'PIT-RADWAR S.A.', 'announcementLogoTest.jpg', 'nic');
 
 -- --------------------------------------------------------
 
@@ -246,13 +278,6 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Dumping data for table `login_session`
---
-
-INSERT INTO `login_session` (`session_id`, `code`, `email`, `sign_type`, `start_date`) VALUES
-(46, '1f8db700e6a4375d6f789b42b3c359a2557451485e08', 'xd@gmail.com', 'In', '2024-02-19 15:47:53');
 
 -- --------------------------------------------------------
 
@@ -322,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `user_data` (
   `surname` varchar(25) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   `telephone_number` decimal(9,0) DEFAULT NULL,
-  `pfp` blob DEFAULT NULL,
+  `pfp` text DEFAULT NULL,
   `city` varchar(35) DEFAULT NULL,
   `currnent_occupation` varchar(75) DEFAULT NULL,
   `summary` text DEFAULT NULL,
