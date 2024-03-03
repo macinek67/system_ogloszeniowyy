@@ -36,14 +36,10 @@
 
             <div class="mt-4 overflow-auto">
                 <?php
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-                    echo $data["searchedOffersList"];
-
+                    foreach($data["searchedOffersList"] as $searchedAnnouncement)
+                    {
+                        echo $searchedAnnouncement;
+                    }
                     echo $data["searchPagination"];
                 ?>
             </div>

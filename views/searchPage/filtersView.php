@@ -10,10 +10,13 @@
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label text-primary-emphasis mb-1" for="flexCheckDefault">praktykant / stażysta</label><br>
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label text-primary-emphasis mb-1" for="flexCheckDefault">praktykant / stażysta</label>
+                            <?php
+                                foreach($data["position_levels_list"] as $positionLevel)
+                                {
+                                    echo "<input class='form-check-input' type='checkbox' value=".$positionLevel["id"]." >";
+                                    echo "<label class='form-check-label text-primary-emphasis mb-1'>".$positionLevel["name"]."</label><br>";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -29,7 +32,13 @@
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
                         <div class="form-check">
-                            
+                            <?php
+                                foreach($data["contract_types_list"] as $contractType)
+                                {
+                                    echo "<input class='form-check-input' type='checkbox' value=".$contractType["id"]." >";
+                                    echo "<label class='form-check-label text-primary-emphasis mb-1'>".$contractType["name"]."</label><br>";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -45,7 +54,13 @@
                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
                         <div class="form-check">
-                            
+                            <?php
+                                foreach($data["working_times_list"] as $workingTime)
+                                {
+                                    echo "<input class='form-check-input' type='checkbox' value=".$workingTime["id"]." >";
+                                    echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -61,23 +76,13 @@
                 <div id="panelsStayOpen-collapseFourth" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFourth">
                     <div class="accordion-body">
                         <div class="form-check">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingFifth">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFifth" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                    <label class="h5 fw-bolder text-primary-emphasis mb-0">Czas publikacji ogłoszenia</label>
-                </button>
-                </h2>
-                <div id="panelsStayOpen-collapseFifth" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFifth">
-                    <div class="accordion-body">
-                        <div class="form-check">
-                            
+                            <?php
+                                foreach($data["work_types_list"] as $workingTime)
+                                {
+                                    echo "<input class='form-check-input' type='checkbox' value=".$workingTime["id"]." >";
+                                    echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

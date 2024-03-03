@@ -1,6 +1,6 @@
 <div class="mb-3 pt-lg-0 pt-3">
     <label class="h5 fw-bolder text-primary-emphasis">Znaleziono - </label>
-    <label class="fw-bolder">12 568 oferty pracy</label>
+    <label class="fw-bolder"><?php echo $data["searchedAnnouncementsCount"]; ?> oferty pracy</label>
 </div>
 
 <form class="bg-white shadow-sm rounded-2 border">

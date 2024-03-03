@@ -71,7 +71,7 @@
                 return;
             }
 
-            if(count($user) > 0)
+            if(count($user) == 1)
             {
                 $um->createLoginSession($_POST["email"], "In");
                 $session_code = $um->getSessionCode($_POST["email"]);
@@ -102,6 +102,7 @@
                 header("Location: " . ROOT_URL . "login/email");
                 return;
             }
+
             $um->signInUserAndDeleteSession($_POST["email"], $_POST["password"], $_POST["code"]);
         }
 

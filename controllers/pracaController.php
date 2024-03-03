@@ -1,5 +1,6 @@
 <?php
-    require_once("models/userModel.php");
+    require_once("models/announcementModel.php");
+    require_once("models/companyModel.php");
 
     class pracaController
     {
@@ -57,14 +58,43 @@
 
         public function szukaj($parameters)
         {
+            $am = new announcementModel();
+
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
 
-            $data["filters"] = loader::loadView("searchPage", "filtersView", null, true);
+            $filters_data["position_levels_list"] = $am->getPositionLevels();
+            $filters_data["contract_types_list"] = $am->getContractTypes();
+            $filters_data["working_times_list"] = $am->getWorking_times();
+            $filters_data["work_types_list"] = $am->getWork_types();
+            $data["filters"] = loader::loadView("searchPage", "filtersView", $filters_data, true);
 
-            $data["sortPanel"] = loader::loadView("searchPage", "sortPanelView", null, true);
+            $filters = [
+                "position_name" => "Programista",
+                "city" => "Kraków",
+                "category_id" => [1, 5, 9, 10],
+                "subcategory_id" => [1, 6, 9],
+                "position_level_id" => [1, 3, 4],
+                "contract_type_id" => [1, 5, 7],
+                "working_time_id" => [1, 3],
+                "work_type_id" => [2, 3],
+            ];
+            $searchedAnnouncements = $am->getAnnouncementsByFilters($filters);
+            
+            $sortPanelData["searchedAnnouncementsCount"] = count($searchedAnnouncements);
+            $data["sortPanel"] = loader::loadView("searchPage", "sortPanelView", $sortPanelData, true);
 
-            $data["searchedOffersList"] = loader::loadView("searchPage", "singleSearchedOfferView", null, true);
+            $searchedAnnouncementsViewsList = [];
+            $cm = new companyModel();
+            foreach($searchedAnnouncements as $announcement)
+            {
+                $companyData = $cm->getCompanyData($announcement["company_id"]);
+                $announcement["company_shortName"] = $companyData["short_name"];
+                $announcement["company_logo"] = $companyData["logo"];
+                $announcement["start_date"] = substr($announcement["start_date"], 0, 10);
+                array_push($searchedAnnouncementsViewsList, loader::loadView("searchPage", "singleSearchedOfferView", $announcement, true));
+            }
+            $data["searchedOffersList"] = $searchedAnnouncementsViewsList;
 
             $data["searchPagination"] = loader::loadView("searchPage", "searchPaginationView", null, true);
 

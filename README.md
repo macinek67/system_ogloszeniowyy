@@ -4,16 +4,11 @@
 - projekt tworzony przy uzyciu lokalnego serwera XAMPP
 
 
-• Legenda postepu:
-- ✅ - skonczone wymagane minimum
-- 🕔 - zaczete, w trakcie tworzenia
-- ❌ - niezaczete
-
-
-• Widoki:
-- ✅ widok profilu uzytkownika (http://localhost/system_ogloszeniowy/konto/profil)
-- ✅ widok ogloszenia pracy (http://localhost/system_ogloszeniowy/praca/oferta)
-- ✅ widok strony glownej (http://localhost/system_ogloszeniowy/praca/glowna)
-
-• Backend:
-❌❌❌
+• Postępy (front-end/back-end):
+- ✅/❌ profil uzytkownika, zapisane, zaaplikowane (http://localhost/FOLDER_NAME/konto/profil)
+- ✅/❌ ogloszenie pracy (http://localhost/FOLDER_NAME/praca/oferta)
+- ✅/❌ glowna (http://localhost/FOLDER_NAME/praca/glowna)
+- ✅/❌ szukanie ogloszen (http://localhost/FOLDER_NAME/praca/szukaj)
+- ✅/✅ logowanie/rejestracja (http://localhost/FOLDER_NAME/login/email)
+- ❌/❌ panel administratora
+- ❌/❌ profil firmy
