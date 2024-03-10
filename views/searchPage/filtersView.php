@@ -1,4 +1,4 @@
-<form class="rounded-2" action="" method="post">
+<form class="rounded-2" action="<?php echo ROOT_URL . "praca/szukaj"; ?>" method="post">
     <div class="col-md-11 col-12 bg-white shadow-sm rounded-2">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -13,7 +13,7 @@
                             <?php
                                 foreach($data["position_levels_list"] as $positionLevel)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' value=".$positionLevel["id"]." >";
+                                    echo "<input class='form-check-input' type='checkbox' name='position_level_id[]' value=".$positionLevel["id"]." >";
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$positionLevel["name"]."</label><br>";
                                 }
                             ?>
@@ -35,7 +35,7 @@
                             <?php
                                 foreach($data["contract_types_list"] as $contractType)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' value=".$contractType["id"]." >";
+                                    echo "<input class='form-check-input' type='checkbox' name='contract_type_id[]' value=".$contractType["id"]." >";
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$contractType["name"]."</label><br>";
                                 }
                             ?>
@@ -57,7 +57,7 @@
                             <?php
                                 foreach($data["working_times_list"] as $workingTime)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' value=".$workingTime["id"]." >";
+                                    echo "<input class='form-check-input' type='checkbox' name='working_time_id[]' value=".$workingTime["id"]." >";
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
                                 }
                             ?>
@@ -79,7 +79,7 @@
                             <?php
                                 foreach($data["work_types_list"] as $workingTime)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' value=".$workingTime["id"]." >";
+                                    echo "<input class='form-check-input' type='checkbox' name='work_type_id[]' value=".$workingTime["id"]." >";
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
                                 }
                             ?>

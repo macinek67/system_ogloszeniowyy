@@ -1,4 +1,4 @@
-<div class="mt-4 mb-3 d-sm-flex d-none justify-content-center mx-auto">
+<!-- <div class="mt-4 mb-3 d-sm-flex d-none justify-content-center mx-auto">
     <button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center ms-3" disabled><i class="bi bi-arrow-left"></i></button>
     <button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center currentSiteButton">1</button>
     <button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center">2</button>
@@ -11,7 +11,7 @@
 <div class="mt-4 mb-3 d-sm-none d-flex justify-content-center mx-auto">
     <button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center ms-3" disabled><i class="bi bi-arrow-left"></i></button>
     <button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center"><i class="bi bi-arrow-right"></i></button>
-</div>
+</div> -->
 
 <style>
     .btn-outline-alt {

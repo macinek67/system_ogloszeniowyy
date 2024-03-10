@@ -72,10 +72,14 @@
                     continue;
                 }
 
+                //if($type != "page")
                 $query = $query . $type . " LIKE '%" . $choosed . "%' AND ";
             }
 
-            $result = $this->connection->query(substr($query, 0, -4));
+            $query = substr($query, 0, -4);
+            //$query = $query . "LIMIT " . ANN_PER_PAGE . " OFFSET " . ($filters["page"] * ANN_PER_PAGE) - ANN_PER_PAGE;
+
+            $result = $this->connection->query($query);
             $matchingAnnouncements = [];
 
             while($row = $result->fetch_assoc()) {

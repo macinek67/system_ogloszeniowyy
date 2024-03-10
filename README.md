@@ -8,7 +8,7 @@
 - ✅/❌ profil uzytkownika, zapisane, zaaplikowane (http://localhost/FOLDER_NAME/konto/profil)
 - ✅/❌ ogloszenie pracy (http://localhost/FOLDER_NAME/praca/oferta)
 - ✅/❌ glowna (http://localhost/FOLDER_NAME/praca/glowna)
-- ✅/❌ szukanie ogloszen (http://localhost/FOLDER_NAME/praca/szukaj)
+- ✅/✅ szukanie ogloszen (http://localhost/FOLDER_NAME/praca/szukaj)
 - ✅/✅ logowanie/rejestracja (http://localhost/FOLDER_NAME/login/email)
 - ❌/❌ panel administratora
 - ❌/❌ profil firmy
