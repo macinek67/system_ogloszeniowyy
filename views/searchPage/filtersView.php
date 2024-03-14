@@ -1,4 +1,4 @@
-<form class="rounded-2" action="<?php echo ROOT_URL . "praca/szukaj"; ?>" method="post">
+<form id="searchPageMainForm" class="rounded-2" action="<?php echo ROOT_URL . "praca/szukaj"; ?>" method="post">
     <div class="col-md-11 col-12 bg-white shadow-sm rounded-2">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -13,7 +13,14 @@
                             <?php
                                 foreach($data["position_levels_list"] as $positionLevel)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' name='position_level_id[]' value=".$positionLevel["id"]." >";
+                                    if(in_array($positionLevel["id"], $data["checked-position_levels"]))
+                                    {
+                                        echo "<input class='form-check-input' checked type='checkbox' name='position_level_id[]' value=".$positionLevel["id"]." >";
+                                    }
+                                    else
+                                    {
+                                        echo "<input class='form-check-input' type='checkbox' name='position_level_id[]' value=".$positionLevel["id"]." >";
+                                    }
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$positionLevel["name"]."</label><br>";
                                 }
                             ?>
@@ -35,7 +42,14 @@
                             <?php
                                 foreach($data["contract_types_list"] as $contractType)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' name='contract_type_id[]' value=".$contractType["id"]." >";
+                                    if(in_array($contractType["id"], $data["checked-contract_type"]))
+                                    {
+                                        echo "<input class='form-check-input' checked type='checkbox' name='contract_type_id[]' value=".$contractType["id"]." >";
+                                    }
+                                    else
+                                    {
+                                        echo "<input class='form-check-input' type='checkbox' name='contract_type_id[]' value=".$contractType["id"]." >";
+                                    }
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$contractType["name"]."</label><br>";
                                 }
                             ?>
@@ -57,7 +71,14 @@
                             <?php
                                 foreach($data["working_times_list"] as $workingTime)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' name='working_time_id[]' value=".$workingTime["id"]." >";
+                                    if(in_array($workingTime["id"], $data["checked-working_time"]))
+                                    {
+                                        echo "<input class='form-check-input' checked type='checkbox' name='working_time_id[]' value=".$workingTime["id"]." >";
+                                    }
+                                    else
+                                    {
+                                        echo "<input class='form-check-input' type='checkbox' name='working_time_id[]' value=".$workingTime["id"]." >";
+                                    }
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
                                 }
                             ?>
@@ -79,7 +100,14 @@
                             <?php
                                 foreach($data["work_types_list"] as $workingTime)
                                 {
-                                    echo "<input class='form-check-input' type='checkbox' name='work_type_id[]' value=".$workingTime["id"]." >";
+                                    if(in_array($workingTime["id"], $data["checked-work_type"]))
+                                    {
+                                        echo "<input class='form-check-input' checked type='checkbox' name='work_type_id[]' value=".$workingTime["id"]." >";
+                                    }
+                                    else
+                                    {
+                                        echo "<input class='form-check-input' type='checkbox' name='work_type_id[]' value=".$workingTime["id"]." >";
+                                    }
                                     echo "<label class='form-check-label text-primary-emphasis mb-1'>".$workingTime["name"]."</label><br>";
                                 }
                             ?>
@@ -87,6 +115,8 @@
                     </div>
                 </div>
             </div>
+
+            <input id="changePageFormControl" type="hidden" name="page" value="1">
 
             <div class="pt-3 pb-3 ps-4 pe-4 border border-top-0 rounded-bottom-2">
                 <button class="btn-alt border-0 rounded-5 p-3 w-100"><label class="h5 fw-bolder mb-0"><i class="bi bi-search me-1"></i> Pokaż oferty</label></button>

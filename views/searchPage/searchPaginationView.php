@@ -1,5 +1,15 @@
 <!-- <div class="mt-4 mb-3 d-sm-flex d-none justify-content-center mx-auto">
-    <button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center ms-3" disabled><i class="bi bi-arrow-left"></i></button>
+    <?php
+        if($data["currentPage"] != 1)
+        {
+            echo '<button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center ms-3"><i class="bi bi-arrow-left"></i></button>';
+        }
+        else
+        {
+            echo '<button class="btn btn-outline-alt rounded-circle me-3 p-1 text-center ms-3" disabled><i class="bi bi-arrow-left"></i></button>';
+            echo '<button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center currentSiteButton">1</button>';
+        }
+    ?>
     <button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center currentSiteButton">1</button>
     <button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center">2</button>
     <button class="btn btn-outline-alt rounded-circle me-3 text-start p-1 text-center">3</button>

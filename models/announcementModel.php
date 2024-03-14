@@ -60,7 +60,7 @@
             return $typeList;
         }
 
-        public function getAnnouncementsByFilters($filters)
+        public function getAnnouncementsByFilters($filters, $includePages)
         {
             $query = "SELECT * FROM announcement WHERE ";
 
@@ -82,13 +82,15 @@
                     continue;
                 }
 
-                //if($type != "page")
-                $query = $query . $type . " LIKE '%" . $choosed . "%' AND ";
+                if($type != "page")
+                    $query = $query . $type . " LIKE '%" . $choosed . "%' AND ";
             }
 
             $query = substr($query, 0, -4);
-            //$query = $query . "LIMIT " . ANN_PER_PAGE . " OFFSET " . ($filters["page"] * ANN_PER_PAGE) - ANN_PER_PAGE;
 
+            if($includePages == true)
+                $query = $query . "LIMIT " . ANN_PER_PAGE . " OFFSET " . ($filters["page"] * ANN_PER_PAGE) - ANN_PER_PAGE;
+                
             $result = $this->connection->query($query);
             $matchingAnnouncements = [];
 

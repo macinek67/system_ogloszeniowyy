@@ -114,6 +114,15 @@
             // "working_time_id" => [1, 3],
             //"work_type_id" => [],
             //"page" => 1
+            "position_name" => "",
+            "city" => "",
+            "category_id" => [],
+            "subcategory_id" => [],
+            "position_level_id" => [],
+            "contract_type_id" => [],
+            "working_time_id" => [],
+            "work_type_id" => [],
+            "page" => 1
         ];
 
         public function szukaj($parameters)
@@ -130,18 +139,24 @@
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
 
+
             $filters_data["position_levels_list"] = $am->getPositionLevels();
             $filters_data["contract_types_list"] = $am->getContractTypes();
             $filters_data["working_times_list"] = $am->getWorking_times();
             $filters_data["work_types_list"] = $am->getWork_types();
-
+            $filters_data["checked-position_levels"] = $this->filters["position_level_id"];
+            $filters_data["checked-contract_type"] = $this->filters["contract_type_id"];
+            $filters_data["checked-working_time"] = $this->filters["working_time_id"];
+            $filters_data["checked-work_type"] = $this->filters["work_type_id"];
             $data["filters"] = loader::loadView("searchPage", "filtersView", $filters_data, true);
 
-            $searchedAnnouncements = $am->getAnnouncementsByFilters($this->filters);
-            
-            $sortPanelData["searchedAnnouncementsCount"] = count($searchedAnnouncements);
-            $sortPanelData["pages"] = ceil(count($searchedAnnouncements) / ANN_PER_PAGE);
-            $sortPanelData["filters"] = $parameters[0];
+
+            $searchedAnnouncements = $am->getAnnouncementsByFilters($this->filters, true);
+            $allAnnouncements = $am->getAnnouncementsByFilters($this->filters, false);
+
+            $sortPanelData["searchedAnnouncementsCount"] = count($allAnnouncements);
+            $sortPanelData["pages"] = ceil(count($allAnnouncements) / ANN_PER_PAGE);
+            $sortPanelData["currentPage"] = $this->filters["page"];
             $data["sortPanel"] = loader::loadView("searchPage", "sortPanelView", $sortPanelData, true);
 
             $searchedAnnouncementsViewsList = [];
@@ -156,7 +171,9 @@
             }
             $data["searchedOffersList"] = $searchedAnnouncementsViewsList;
 
-            $data["searchPagination"] = loader::loadView("searchPage", "searchPaginationView", null, true);
+            $paginationData["pages"] = ceil(count($allAnnouncements) / ANN_PER_PAGE);
+            $paginationData["currentPage"] = $this->filters["page"];
+            $data["searchPagination"] = loader::loadView("searchPage", "searchPaginationView", $paginationData, true);
 
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
 
@@ -165,69 +182,23 @@
 
         public function setFilters()
         {
-            //$_POST["position_name"] = "Programista";
-            //$_POST["city"] = "Kraków";
-
-            //$string = "";
             foreach ($_POST as $type => $value_arr)
             {
-                //$string = $string . $type . "=";
                 $values = [];
                 if(is_array($value_arr))
                 {
                     foreach($value_arr as $value)
                     {
                         array_push($values, $value);
-                        //$string = $string . $value;
-                        //if(next($value_arr))
-                            //$string = $string . ",";
                     }
-                    //$string = $string . ";";
                 }
                 else
                 {
-                    //$string = $string . $value_arr . ";";
                     $values = $value_arr;
                 }
                 $this->filters[$type] = $values;
             }
-            //header("Location:" . ROOT_URL . "praca/szukaj/" . $string);
         }
-
-        // public function changePage()
-        // {
-        //     $filterLink = $_POST["filters"];
-
-        //     if(str_contains($filterLink, ";page") == true)
-        //     {
-        //         $explodedLink = explode(";", $filterLink);
-
-        //         unset($explodedLink[count($explodedLink)-2]);
-        //         $explodedLink = implode(";", $explodedLink);
-
-        //         $filterLink = $explodedLink . "page=" . $_POST["page"] . ";";
-
-        //         header("Location:" . ROOT_URL . "praca/szukaj/" . $filterLink);
-        //         return;
-        //     }
-
-        //     $filterLink = $filterLink . "page=" . $_POST["page"] . ";";
-        //     header("Location:" . ROOT_URL . "praca/szukaj/" . $filterLink);
-        // }
-
-        // public function getFilters($filter)
-        // {
-
-        //     foreach(explode(";", $filter) as $types)
-        //     {
-        //         $values = [];
-        //         //echo $types . " ";
-        //         foreach(explode("=", $types) as $valueArray)
-        //         {
-        //             echo $valueArray . " ";
-        //         }
-        //     }
-        // }
 
     }
 ?>
