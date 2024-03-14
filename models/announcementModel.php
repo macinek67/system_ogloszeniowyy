@@ -10,6 +10,16 @@
             $this->connection = new mysqli("localhost", "root", "", "system_ogloszeniowy");
         }
 
+        public function getAnnouncementById($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement WHERE announcement_id='$id'");
+            $positionsList = [];
+            if($row = $result->fetch_assoc()) {
+                array_push($positionsList, $row);
+            }
+            return $positionsList;
+        }
+
         public function getPositionLevels()
         {
             $result = $this->connection->query("SELECT * FROM announcement_position_level");
@@ -87,6 +97,36 @@
             }
 
             return $matchingAnnouncements;
+        }
+
+        public function getAnnouncementBenefits($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_benefit WHERE announcement_id='$id'");
+            $benefitsList = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($benefitsList, $row);
+            }
+            return $benefitsList;
+        }
+
+        public function getAnnouncementRequirements($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_requirement WHERE announcement_id='$id'");
+            $requirementsList = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($requirementsList, $row);
+            }
+            return $requirementsList;
+        }
+
+        public function getAnnouncementResponsibilities($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_responsibility WHERE announcement_id='$id'");
+            $ResponsibilitiesList = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($ResponsibilitiesList, $row);
+            }
+            return $ResponsibilitiesList;
         }
     }
 

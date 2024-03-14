@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2024 at 04:21 PM
+-- Generation Time: Mar 14, 2024 at 02:40 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -74,7 +74,15 @@ CREATE TABLE IF NOT EXISTS `announcement_benefit` (
   `announcement_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`benefit_id`),
   KEY `announcement_id` (`announcement_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement_benefit`
+--
+
+INSERT INTO `announcement_benefit` (`benefit_id`, `description`, `announcement_id`) VALUES
+(1, 'kawa za darmo', 2),
+(2, 'pomoc medyczna', 2);
 
 -- --------------------------------------------------------
 
@@ -162,7 +170,15 @@ CREATE TABLE IF NOT EXISTS `announcement_requirement` (
   `announcement_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`requirement_id`),
   KEY `announcement_id` (`announcement_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement_requirement`
+--
+
+INSERT INTO `announcement_requirement` (`requirement_id`, `description`, `announcement_id`) VALUES
+(1, 'posiadasz wykształcenie wyższe lub jesteś w trakcie studiów (mile widziane studia z zakresu marketingu, zarządzania lub innych pokrewnych kierunków),', 2),
+(2, 'jesteś bardzo dokładny/-a i zwracasz uwagę na szczegóły, a jeśli jest np. jakaś literówka w tekście - z łatwością ją zauważasz.', 2);
 
 -- --------------------------------------------------------
 
@@ -176,7 +192,16 @@ CREATE TABLE IF NOT EXISTS `announcement_responsibility` (
   `announcement_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`responsibility_id`),
   KEY `announcement_id` (`announcement_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `announcement_responsibility`
+--
+
+INSERT INTO `announcement_responsibility` (`responsibility_id`, `description`, `announcement_id`) VALUES
+(1, 'Streamline & digitize Atlassian business flows & service requests On boarding teams to the Atlassian stack (Bitbucket, Jira, Confluence, etc.) and creating new functionality in support of the product and technology platform tribes. This includes the automation of manual service requests, enabling the end user to complete common activities themselves, and overall streamlining of business workflows.', 2),
+(2, 'planowanie harmonogramu oraz realizowanie zgodnie z nim działań marketingowych jednego z naszych brandów,', 2),
+(3, 'kontakt z kontrahentami.', 2);
 
 -- --------------------------------------------------------
 
@@ -277,7 +302,14 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `login_session`
+--
+
+INSERT INTO `login_session` (`session_id`, `code`, `email`, `sign_type`, `start_date`) VALUES
+(47, '596609bd86a8a148a3a5163cc1f36bb466ac021469f1', 'tak@gmail.com', 'In', '2024-03-13 18:08:35');
 
 -- --------------------------------------------------------
 

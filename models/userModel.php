@@ -16,7 +16,8 @@
 
             $gotUser = [];
             if ($row = $result->fetch_assoc()) {
-                $gotUser = $row;
+                array_push($gotUser, $row);
+                //$gotUser = $row;
             }
 
             return $gotUser;

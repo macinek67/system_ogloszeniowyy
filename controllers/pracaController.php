@@ -6,6 +6,19 @@
     {
         public function oferta($parameters)
         {
+            $am = new announcementModel();
+
+            $announcement = $am->getAnnouncementById($parameters[0]);
+            if(count($announcement) == 0)
+            {
+                header("Location: " . ROOT_URL . "praca/glowna");
+                return;
+            }
+
+            //$this->tak("Utworzono nowego uzytkownika.");
+            //$this->tak("Zesralem sie!");
+            // $this->tak("Wow!");
+
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
 
@@ -13,9 +26,38 @@
             $mainPanel_data["mainPanel_header"] = loader::loadView("announcement", "mainPanel_headerView", null, true);
             $mainPanel_data["mainPanel_coreInfo"] = loader::loadView("announcement", "mainPanel_coreInfoView", null, true);
             $mainPanel_data["mainPanel_localization"] = loader::loadView("announcement", "mainPanel_localizationView", null, true);
-            $mainPanel_data["mainPanel_responsibilities"] = loader::loadView("announcement", "mainPanel_responsibilitiesView", null, true);
-            $mainPanel_data["mainPanel_requirements"] = loader::loadView("announcement", "mainPanel_requirementsView", null, true);
-            $mainPanel_data["mainPanel_benefits"] = loader::loadView("announcement", "mainPanel_benefitsView", null, true);
+
+
+            $responsibilities = $am->getAnnouncementResponsibilities($announcement[0]["announcement_id"]);
+            $responsibilitiesData["list"] = [];
+            foreach($responsibilities as $responsibility)
+            {
+                $responsibilityData["content"] = $responsibility["description"];
+                array_push($responsibilitiesData["list"], loader::loadView("announcement", "singleResponsibilityView", $responsibilityData, true));
+            }
+            $mainPanel_data["mainPanel_responsibilities"] = loader::loadView("announcement", "mainPanel_responsibilitiesView", $responsibilitiesData, true);
+
+
+            $requirements = $am->getAnnouncementRequirements($announcement[0]["announcement_id"]);
+            $requirementsData["list"] = [];
+            foreach($requirements as $requirement)
+            {
+                $requirementData["content"] = $requirement["description"];
+                array_push($requirementsData["list"], loader::loadView("announcement", "singleRquirementView", $requirementData, true));
+            }
+            $mainPanel_data["mainPanel_requirements"] = loader::loadView("announcement", "mainPanel_requirementsView", $requirementsData, true);
+
+
+            $benefits = $am->getAnnouncementBenefits($announcement[0]["announcement_id"]);
+            $benefitsData["list"] = [];
+            foreach($benefits as $benefit)
+            {
+                $benefitData["content"] = $benefit["description"];
+                array_push($benefitsData["list"], loader::loadView("announcement", "singleBenefitView", $benefitData, true));
+            }
+            $mainPanel_data["mainPanel_benefits"] = loader::loadView("announcement", "mainPanel_benefitsView", $benefitsData, true);
+
+
             $mainPanel_data["mainPanel_footer"] = loader::loadView("announcement", "mainPanel_footerView", null, true);
             $mainPanel_data["sidePanel"] = loader::loadView("announcement", "sidePanelView", null, true);
 
@@ -27,6 +69,12 @@
 
             loader::loadView("announcement", "announcementView", $data);
         }
+
+        // private function tak($message)
+        // {
+        //     $data["messageContent"] = $message;
+        //     loader::loadView("messages", "successfulMessageView", $data);
+        // }
 
         public function glowna($parameters)
         {
