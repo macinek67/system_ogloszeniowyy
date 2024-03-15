@@ -3,10 +3,10 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <label class="me-1 text-secondary">•</label>
-                <li class="breadcrumb-item"><a href="#" class="text-secondary link-underline link-secondary link-underline-opacity-0 link-underline-opacity-75-hover">Praca</a></li>
-                <li class="breadcrumb-item"><a href="#" class="text-secondary link-underline link-secondary link-underline-opacity-0 link-underline-opacity-75-hover">Kraków</a></li>
-                <li class="breadcrumb-item"><a href="#" class="text-secondary link-underline link-secondary link-underline-opacity-0 link-underline-opacity-75-hover">IT Administracja</a></li>
-                <li class="breadcrumb-item"><a href="#" class="text-secondary link-underline link-secondary link-underline-opacity-0 link-underline-opacity-75-hover">Administrowanie systemami</a></li>
+                <li class="breadcrumb-item"><label class="text-secondary">Praca</label></li>
+                <li class="breadcrumb-item"><label class="text-secondary"><?php echo $data["city"]; ?></label></li>
+                <li class="breadcrumb-item"><label class="text-secondary"><?php echo $data["category"]; ?></label></li>
+                <li class="breadcrumb-item"><label class="text-secondary"><?php echo $data["subcategory"]; ?></label></li>
             </ol>
         </nav>
     </small>

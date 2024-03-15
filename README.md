@@ -11,4 +11,3 @@
 - ✅/✅ szukanie ogloszen (http://localhost/SOLUTION_FOLDER_NAME/praca/szukaj)
 - ✅/✅ logowanie/rejestracja (http://localhost/SOLUTION_FOLDER_NAME/login/email)
 - ❌/❌ panel administratora
-- ❌/❌ profil firmy

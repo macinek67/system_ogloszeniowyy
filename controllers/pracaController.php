@@ -7,6 +7,7 @@
         public function oferta($parameters)
         {
             $am = new announcementModel();
+            $cm = new companyModel();
 
             $announcement = $am->getAnnouncementById($parameters[0]);
             if(count($announcement) == 0)
@@ -15,17 +16,23 @@
                 return;
             }
 
-            //$this->tak("Utworzono nowego uzytkownika.");
-            //$this->tak("Zesralem sie!");
-            // $this->tak("Wow!");
-
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
 
 
-            $mainPanel_data["mainPanel_header"] = loader::loadView("announcement", "mainPanel_headerView", null, true);
+            $companyData = $cm->getCompanyData($announcement[0]["company_id"]);
+            $mainPanelHeaderData["position_name"] = $announcement[0]["position_name"];
+            $mainPanelHeaderData["earnings"] = $announcement[0]["earnings"];
+            $mainPanelHeaderData["company_name"] = $companyData["short_name"];
+            $mainPanelHeaderData["company_logo"] = $companyData["logo"];
+            $mainPanel_data["mainPanel_header"] = loader::loadView("announcement", "mainPanel_headerView", $mainPanelHeaderData, true);
+
+
             $mainPanel_data["mainPanel_coreInfo"] = loader::loadView("announcement", "mainPanel_coreInfoView", null, true);
-            $mainPanel_data["mainPanel_localization"] = loader::loadView("announcement", "mainPanel_localizationView", null, true);
+
+
+            $localizationData["localization"] = $announcement[0]["localization_link"];
+            $mainPanel_data["mainPanel_localization"] = loader::loadView("announcement", "mainPanel_localizationView", $localizationData, true);
 
 
             $responsibilities = $am->getAnnouncementResponsibilities($announcement[0]["announcement_id"]);
@@ -58,16 +65,36 @@
             $mainPanel_data["mainPanel_benefits"] = loader::loadView("announcement", "mainPanel_benefitsView", $benefitsData, true);
 
 
-            $mainPanel_data["mainPanel_footer"] = loader::loadView("announcement", "mainPanel_footerView", null, true);
-            $mainPanel_data["sidePanel"] = loader::loadView("announcement", "sidePanelView", null, true);
+            $mainPanelFooterData["city"] = $announcement[0]["city"];
+            $mainPanelFooterData["category"] = $am->getAnnouncementCategoryName($announcement[0]["category_id"]);
+            $mainPanelFooterData["subcategory"] = $am->getAnnouncementSubcategoryName($announcement[0]["subcategory_id"]);
+            $mainPanel_data["mainPanel_footer"] = loader::loadView("announcement", "mainPanel_footerView", $mainPanelFooterData, true);
+
+
+            $sidePanelData["announcement_id"] = $announcement[0]["announcement_id"];
+            $mainPanel_data["sidePanel"] = loader::loadView("announcement", "sidePanelView", $sidePanelData, true);
 
 
             $data["mainPanel"] = loader::loadView("announcement", "mainPanelView", $mainPanel_data, true);
-            $data["sidePanel"] = loader::loadView("announcement", "sidePanelView", null, true);
+
+
+            $data["sidePanel"] = loader::loadView("announcement", "sidePanelView", $sidePanelData, true);
+
+
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
 
 
             loader::loadView("announcement", "announcementView", $data);
+        }
+
+        public function applyToAnnouncement($parameters)
+        {
+            session_start();
+
+            $am = new announcementModel();
+            $am->insertAppliedAnnouncement($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
 
         // private function tak($message)
@@ -105,15 +132,6 @@
         }
 
         public $filters = [
-            //"position_name" => "Programista",
-            //"city" => "Kraków",
-            // "category_id" => [1, 5, 9, 10],
-            // "subcategory_id" => [1, 6, 9],
-            // "position_level_id" => [1, 3, 4],
-            // "contract_type_id" => [1, 5, 7],
-            // "working_time_id" => [1, 3],
-            //"work_type_id" => [],
-            //"page" => 1
             "position_name" => "",
             "city" => "",
             "category_id" => [],
@@ -127,7 +145,6 @@
 
         public function szukaj($parameters)
         {
-            //$this->getFilters($parameters[0]);
             $this->setFilters();
 
             $am = new announcementModel();

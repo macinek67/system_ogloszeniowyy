@@ -130,6 +130,32 @@
             }
             return $ResponsibilitiesList;
         }
+
+        public function getAnnouncementCategoryName($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_category WHERE category_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
+
+        public function getAnnouncementSubcategoryName($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_subcategory WHERE subcategory_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
+
+        public function insertAppliedAnnouncement($announcementId)
+        {
+            $user_id = $_SESSION["user_id"];
+            $result = $this->connection->query("SELECT * FROM user_application WHERE user_id='$user_id' AND announcement_id='$announcementId'");
+            if($row = $result->fetch_assoc()) {
+                return;
+            }
+            $result = $this->connection->query("INSERT INTO user_application(announcement_id, user_id) VALUES('$announcementId', '$user_id')");
+        }
     }
 
 ?>
