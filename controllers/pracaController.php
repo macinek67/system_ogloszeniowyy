@@ -28,7 +28,15 @@
             $mainPanel_data["mainPanel_header"] = loader::loadView("announcement", "mainPanel_headerView", $mainPanelHeaderData, true);
 
 
-            $mainPanel_data["mainPanel_coreInfo"] = loader::loadView("announcement", "mainPanel_coreInfoView", null, true);
+            $mainPanelCoreInfoData["city"] = $announcement[0]["city"];
+            $daysToEnd = round((strtotime($announcement[0]["end_date"]) - strtotime(date('Y-m-d G:i:s'))) / 86400); 
+            $mainPanelCoreInfoData["daysToEnd"] = $daysToEnd;
+            $mainPanelCoreInfoData["endDate"] = $announcement[0]["end_date"];
+            $mainPanelCoreInfoData["contractType"] = $am->getAnnouncementContractType($announcement[0]["contract_type_id"]);
+            $mainPanelCoreInfoData["workType"] = $am->getAnnouncementWorkType($announcement[0]["work_type_id"]);
+            $mainPanelCoreInfoData["workingTime"] = $am->getAnnouncementWorkingTime($announcement[0]["working_time_id"]);
+            $mainPanelCoreInfoData["positionLevel"] = $am->getAnnouncementPositionLevel($announcement[0]["position_level_id"]);
+            $mainPanel_data["mainPanel_coreInfo"] = loader::loadView("announcement", "mainPanel_coreInfoView", $mainPanelCoreInfoData, true);
 
 
             $localizationData["localization"] = $announcement[0]["localization_link"];
@@ -93,6 +101,16 @@
 
             $am = new announcementModel();
             $am->insertAppliedAnnouncement($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function saveAnnouncement($parameters)
+        {
+            session_start();
+
+            $am = new announcementModel();
+            $am->insertSavedAnnouncement($parameters[0]);
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }

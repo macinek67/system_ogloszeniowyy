@@ -9,8 +9,7 @@
                 </div>
                 <div class="ms-3">
                     <p class="m-0 fw-bold text-secondary">Lokalizacja firmy</p>
-                    <p class="m-0"><a href="" class="fw-bold">Piłsudskiego 43, Stare Miasto, Wrocław</a></p>
-                    <p class="m-0 text-secondary">Wrocław, Lower Silesia</p>
+                    <p class="m-0 text-secondary"><?php echo $data["city"]; ?></p>
                 </div>
             </div>
         </div>
@@ -22,7 +21,7 @@
                 </div>
                 <div class="ms-3">
                     <p class="m-0 fw-bold text-secondary">Miejsce pracy</p>
-                    <p class="m-0 text-secondary">Polska (praca zdalna)</p>
+                    <p class="m-0 text-secondary">Polska (<?php echo $data["workType"]; ?>)</p>
                 </div>
             </div>
         </div>
@@ -37,8 +36,8 @@
                     <i class="bi bi-clock h4 text-primary"></i>
                 </div>
                 <div class="ms-3">
-                    <p class="m-0 text-dark">aktywne jeszcze 24 dni</p>
-                    <p class="m-0 text-secondary">do: 08 Grudzień 2023</p>
+                    <p class="m-0 text-dark">aktywne jeszcze <?php echo $data["daysToEnd"]; ?> dni</p>
+                    <p class="m-0 text-secondary">do: <?php echo $data["endDate"]; ?></p>
                 </div>
             </div>
         </div>
@@ -49,7 +48,7 @@
                     <i class="bi bi-circle-half h4 text-primary"></i>
                 </div>
                 <div class="ms-3">
-                    <p class="m-0 text-dark">pełny etat</p>
+                    <p class="m-0 text-dark"><?php echo $data["workingTime"]; ?></p>
                 </div>
             </div>
         </div>
@@ -64,7 +63,7 @@
                     <i class="bi bi-file-earmark-fill h4 text-primary"></i>
                 </div>
                 <div class="ms-3">
-                    <p class="m-0 text-dark">kontrakt b2b</p>
+                    <p class="m-0 text-dark"><?php echo $data["contractType"]; ?></p>
                 </div>
             </div>
         </div>
@@ -75,7 +74,7 @@
                     <i class="bi bi-bar-chart h4 text-primary"></i>
                 </div>
                 <div class="ms-3">
-                    <p class="m-0 text-dark">starszy specjalista (senior)</p>
+                    <p class="m-0 text-dark"><?php echo $data["positionLevel"]; ?></p>
                 </div>
             </div>
         </div>

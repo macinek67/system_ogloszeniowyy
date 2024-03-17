@@ -156,6 +156,48 @@
             }
             $result = $this->connection->query("INSERT INTO user_application(announcement_id, user_id) VALUES('$announcementId', '$user_id')");
         }
+
+        public function insertSavedAnnouncement($announcementId)
+        {
+            $user_id = $_SESSION["user_id"];
+            $result = $this->connection->query("SELECT * FROM user_saved WHERE user_id='$user_id' AND announcement_id='$announcementId'");
+            if($row = $result->fetch_assoc()) {
+                return;
+            }
+            $result = $this->connection->query("INSERT INTO user_saved(announcement_id, user_id) VALUES('$announcementId', '$user_id')");
+        }
+
+        public function getAnnouncementContractType($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_contract_type WHERE contract_type_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
+
+        public function getAnnouncementWorkType($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_work_type WHERE work_type_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
+
+        public function getAnnouncementWorkingTime($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_working_time WHERE working_time_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
+
+        public function getAnnouncementPositionLevel($id)
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_position_level WHERE position_level_id='$id'");
+            if($row = $result->fetch_assoc()) {
+                return $row["name"];
+            }
+        }
     }
 
 ?>

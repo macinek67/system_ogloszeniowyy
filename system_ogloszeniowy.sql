@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 02:40 PM
+-- Generation Time: Mar 17, 2024 at 02:18 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 --
 
 INSERT INTO `announcement` (`announcement_id`, `company_id`, `localization_link`, `category_id`, `subcategory_id`, `position_name`, `earnings`, `position_level_id`, `city`, `contract_type_id`, `working_time_id`, `work_type_id`, `start_date`, `end_date`, `theme_color`) VALUES
-(2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9500-11000', 4, 'Kraków', 1, 3, 2, '2024-02-21 12:37:43', '2024-02-22 23:59:00', 'primary');
+(2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-03-17 12:37:43', '2024-03-19 23:59:00', 'primary');
 
 -- --------------------------------------------------------
 
@@ -302,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `login_session`
@@ -347,7 +347,14 @@ CREATE TABLE IF NOT EXISTS `user_application` (
   PRIMARY KEY (`application_id`),
   KEY `announcement_id` (`announcement_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_application`
+--
+
+INSERT INTO `user_application` (`application_id`, `announcement_id`, `user_id`) VALUES
+(6, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -486,7 +493,14 @@ CREATE TABLE IF NOT EXISTS `user_saved` (
   PRIMARY KEY (`saved_id`),
   KEY `announcement_id` (`announcement_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_saved`
+--
+
+INSERT INTO `user_saved` (`saved_id`, `announcement_id`, `user_id`) VALUES
+(1, 2, 6);
 
 -- --------------------------------------------------------
 
