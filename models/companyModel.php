@@ -19,6 +19,16 @@
             }
             return $companyData;
         }
+
+        public function getCompaniesByPopularity()
+        {
+            $result = $this->connection->query("SELECT company_id, short_name, logo, COUNT(*) as count FROM company JOIN announcement USING(company_id) GROUP BY company_id ORDER BY count DESC LIMIT 50");
+            $companyData = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($companyData, $row);
+            }
+            return $companyData;
+        }
     }
     
 ?>

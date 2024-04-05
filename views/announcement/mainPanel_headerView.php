@@ -2,10 +2,10 @@
     <div class="d-xl-flex d-block p-sm-4 p-2">
         <div class="d-sm-flex d-block">
             <div class="col-2">
-                <img src="<?php echo IMAGE_URL . $data["company_logo"]; ?>">
+                <img src="<?php echo IMAGE_URL . $data["company_logo"]; ?>" class="imgSize">
             </div>
             <div class="col-xl-9 col-lg-6 col-sm-10 col-12 ms-lg-4 ms-md-0 ms-sm-3 ms-0">
-                <p class="h4 fw-bolder text-primary-emphasis"><?php echo $data["position_name"]; ?></p>
+                <p class="h4 fw-bolder text-primary-emphasis mt-sm-0 mt-2"><?php echo $data["position_name"]; ?></p>
                 <label class="h6"><?php echo $data["company_name"]; ?></label>
             </div>
         </div>
@@ -21,3 +21,10 @@
     </div>
     <hr>
 </div>
+
+<style>
+    .imgSize {
+        width: 80px;
+        height: 80px;
+    }
+</style>

@@ -2,13 +2,10 @@
     <p class="h1 fw-bolder text-primary-emphasis text-center">Pracodawcy, których warto znać</p>
     <div class="mt-5 mb-4 p-1 d-flex overflow-hidden">
         <?php
-            echo $data["companiesList"];
-            echo $data["companiesList"];
-            echo $data["companiesList"];
-            echo $data["companiesList"];
-            echo $data["companiesList"];
-            echo $data["companiesList"];
-            echo $data["companiesList"];
+            foreach($data["companiesList"] as $company)
+            {
+                echo $company;
+            }
         ?>
     </div>
     <div class="mb-5 d-flex justify-content-center">

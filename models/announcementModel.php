@@ -20,6 +20,26 @@
             return $positionsList;
         }
 
+        public function getNewestAnnouncements()
+        {
+            $result = $this->connection->query("SELECT * FROM announcement ORDER BY start_date DESC LIMIT 12");
+            $announcementsList = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($announcementsList, $row);
+            }
+            return $announcementsList;
+        }
+
+        public function countAnnouncements()
+        {
+            $result = $this->connection->query("SELECT * FROM announcement");
+            $announcementsList = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($announcementsList, $row);
+            }
+            return $announcementsList;
+        }
+
         public function getPositionLevels()
         {
             $result = $this->connection->query("SELECT * FROM announcement_position_level");

@@ -123,19 +123,40 @@
 
         public function glowna($parameters)
         {
+            $am = new announcementModel();
+
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-            $data["headerInfo"] = loader::loadView("mainPage", "headerInfoView", null, true);
+
+
+            $headerInfoData["countAnnouncements"] = count($am->countAnnouncements());
+            $data["headerInfo"] = loader::loadView("mainPage", "headerInfoView", $headerInfoData, true);
 
 
             $data["searchSection"] = loader::loadView("mainPage", "searchSectionView", null, true);
 
 
-            $offers_data["offersList"] = loader::loadView("mainPage", "singleOfferView", null, true);
+            $newestAnnouncements = $am->getNewestAnnouncements();
+            $newestAnnouncementsViewsList = [];
+            $cm = new companyModel();
+            foreach($newestAnnouncements as $announcement)
+            {
+                $companyData = $cm->getCompanyData($announcement["company_id"]);
+                $announcement["company_shortName"] = $companyData["short_name"];
+                $announcement["company_logo"] = $companyData["logo"];
+                array_push($newestAnnouncementsViewsList, loader::loadView("mainPage", "singleOfferView", $announcement, true));
+            }
+            $offers_data["searchedOffersList"] = $newestAnnouncementsViewsList;
             $data["offers"] = loader::loadView("mainPage", "offersView", $offers_data, true);
 
 
-            $companies_data["companiesList"] = loader::loadView("mainPage", "singleCompanyView", null, true);
+            $popularCompanies = $cm->getCompaniesByPopularity();
+            $popularCompaniesViewsList = [];
+            foreach($popularCompanies as $company)
+            {
+                array_push($popularCompaniesViewsList, loader::loadView("mainPage", "singleCompanyView", $company, true));
+            }
+            $companies_data["companiesList"] = $popularCompaniesViewsList;
             $data["companies"] = loader::loadView("mainPage", "bestCompaniesListView", $companies_data, true);
 
 

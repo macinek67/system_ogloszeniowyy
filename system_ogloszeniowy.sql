@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 02:18 PM
+-- Generation Time: Apr 05, 2024 at 03:00 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -53,14 +53,16 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   KEY `contract_type_id` (`contract_type_id`),
   KEY `working_time_id` (`working_time_id`),
   KEY `work_type_id` (`work_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`announcement_id`, `company_id`, `localization_link`, `category_id`, `subcategory_id`, `position_name`, `earnings`, `position_level_id`, `city`, `contract_type_id`, `working_time_id`, `work_type_id`, `start_date`, `end_date`, `theme_color`) VALUES
-(2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-03-17 12:37:43', '2024-03-19 23:59:00', 'primary');
+(2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-03-17 12:37:43', '2024-03-19 23:59:00', 'primary'),
+(3, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-04-05 12:37:43', '2024-04-08 23:59:00', 'primary'),
+(4, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-04-05 12:37:43', '2024-04-08 23:59:00', 'primary');
 
 -- --------------------------------------------------------
 
@@ -280,14 +282,15 @@ CREATE TABLE IF NOT EXISTS `company` (
   `logo` text NOT NULL,
   `localization_link` text NOT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`company_id`, `name`, `short_name`, `logo`, `localization_link`) VALUES
-(1, 'PIT-RADWAR Spółka Arytmetyczna', 'PIT-RADWAR S.A.', 'announcementLogoTest.jpg', 'nic');
+(1, 'PIT-RADWAR Spółka Arytmetyczna', 'PIT-RADWAR S.A.', 'announcementLogoTest.jpg', 'nic'),
+(2, 'Motorniczy Bank Centralny', 'Mbank', 'companyIconTest.jpg', 'nic');
 
 -- --------------------------------------------------------
 

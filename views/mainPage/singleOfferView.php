@@ -1,22 +1,24 @@
-<form class="offerContainer p-2" method="post" action="">
+<div class="offerContainer p-2">
     <button type="submit" class="offerButton border rounded-4 bg-white shadow-sm w-100 text-start p-0">
-        <div class="p-2 pt-0">
-            <div class="offerHeader">
-                <p class="fw-bolder text-primary-emphasis m-0">Programista (DevOps - System Pasywnej Lokacji)</p>
-                <small class="fw-bold text-secondary">16 000-23 000 zł net (+ VAT) / mth.</small>
-            </div>
-            <div class="mt-3 d-flex">
-                <img class="offerImg" src="<?php echo IMAGE_URL; ?>announcementLogoTest.jpg">
-                <div class="ms-3">
-                    <small class="m-0 h6 text-primary-emphasis">PIT-RADWAR S.A.</small><br>
-                    <small class="text-secondary">Wrocław</small>
+        <a href="<?php echo ROOT_URL . "praca/oferta/" . $data["announcement_id"]; ?>" class="text-decoration-none">
+            <div class="p-2 pt-0">
+                <div class="offerHeader">
+                    <p class="fw-bolder text-primary-emphasis m-0"><?php echo $data["position_name"]; ?></p>
+                    <small class="fw-bold text-secondary"><?php echo $data["earnings"]; ?> zł net (+ VAT) / mth.</small>
+                </div>
+                <div class="mt-3 d-flex">
+                    <img class="offerImg" src="<?php echo IMAGE_URL . $data["company_logo"]; ?>">
+                    <div class="ms-3">
+                        <small class="m-0 h6 text-primary-emphasis"><?php echo $data["company_shortName"]; ?></small><br>
+                        <small class="text-secondary"><?php echo $data["city"]; ?></small>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr class="mb-1 mt-0">
-        <small class="ms-3 fw-bold text-secondary"><i class="h6 bi bi-lightning align-middle"></i> Aplikuj szybko</small>
+            <hr class="mb-1 mt-0 text-black">
+            <small class="ms-3 fw-bold text-secondary"><i class="h6 bi bi-lightning align-middle"></i> Aplikuj szybko</small>
+        </a>
     </button>
-</form>
+</div>
 
 <style>
     .offerContainer {

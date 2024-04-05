@@ -3,7 +3,7 @@
         <div class="col-md-8 col-12">
             <div class="m-auto row h-100 justify-content-center align-items-center rounded-4 shadow-sm border">
                 <div class="w-auto">
-                    <label class="h1 fw-bolder text-primary-emphasis text-break">78 586 sprawdzonych ofert pracy</label><br>
+                    <label class="h1 fw-bolder text-primary-emphasis text-break"><?php echo $data["countAnnouncements"]; ?> sprawdzonych ofert pracy</label><br>
                     <label class="blockquote float-end text-primary-emphasis d-sm-block d-none">od najlepszych pracodawców</label>
                 </div>
             </div>
