@@ -1,30 +1,28 @@
-<form class="col-12" method="post" action="">
-    <div class="col-sm-10 col-12 bg-light rounded-4 shadow-sm border m-auto p-3">
-        
-        <div class="d-md-flex d-block">
-            <input type="text" class="form-control border-dark p-3" placeholder="Stanowisko, firma, słowo kluczowe">
-            <button class="dropdown form-control border-dark mt-2 mb-2 mt-md-0 mb-md-0" data-bs-toggle="dropdown" aria-expanded="false">
-                Kategoria
-            </button>
-            <input type="text" class="form-control border-dark p-3" placeholder="Lokalizacja">
-        </div>
+<div class="container-lg mt-5 pt-5">
+    <div class="text-center">
+        <p class="h1 fw-bolder text-primary-emphasis">Szukaj najlepszych pozycji</p>
+        <p class="blockquote text-primary-emphasis">Wyszkuj dopasowane do ciebie oferty, aby znaleźć swoją wymarzoną pracę.</p>
+    </div>
+</div>
 
-        <div class="mt-4">
-            <button type="button" class="dropdown btn btn-alt m-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Poziom stanowiska
-            </button>
-            <button type="button" class="dropdown btn btn-alt m-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Rodzaj umowy
-            </button>
-            <button type="button" class="btn btn-alt m-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Wymiar pracy
-            </button>
-            <button type="button" class="btn btn-alt m-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Tryb pracy
-            </button>
-            <button type="submit" class="btn btn-alt fw-bold rounded-5 m-1 ps-4 pe-4"><i class="bi bi-search h5 me-2 align-middle"></i><label class="align-middle">Szukaj</label></button>
+<form class="col-sm-10 col-12 m-auto mt-5" method="post" action="<?php echo ROOT_URL . "praca/szukaj"; ?>">
+    <div class="col-lg-10 col-12 bg-light rounded-4 shadow-sm border m-auto text-center">
+        <div class="ps-sm-4 pe-sm-4 ms-sm-3 me-sm-3 p-3">
+            <div class="dropdown mb-2">
+                <button class="btn border-dark dropdown-toggle w-100 p-3 rounded-3 fw-bold shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">Kategoria</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <div>
+                <input type="text" name="position_name" class="form-control border-dark p-3 mb-2 shadow-sm fw-bolder" placeholder="Stanowisko, firma, słowo kluczowe">
+                <input type="text" name="city" class="form-control border-dark p-3 mb-2 mt-2 shadow-sm fw-bolder" placeholder="Lokalizacja">
+            </div>
         </div>
-    
+        <hr>
+        <button type="submit" class="btn btn-alt fw-bold rounded-5 mt-3 p-3 mb-4 col-11"><i class="bi bi-search h5 me-2 align-middle"></i><label class="align-middle">Szukaj pasujących ofert</label></button>
     </div>
 </form>
 
@@ -32,6 +30,13 @@
     .btn-alt {
         color: white;
         background-color: #0049a8;
+    }
+
+    .btn-outline-alt {
+        border-width: 1px;
+        border-color: #0049a8;
+        color: #0049a8;
+        background-color: white;
     }
 
     .btn-alt:hover,

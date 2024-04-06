@@ -2,9 +2,9 @@
     <div class="d-flex col-12 gap-2">
         <div class="col-md-8 col-12">
             <div class="m-auto row h-100 justify-content-center align-items-center rounded-4 shadow-sm border">
-                <div class="w-auto">
+                <div class="w-auto p-sm-0 p-2">
                     <label class="h1 fw-bolder text-primary-emphasis text-break"><?php echo $data["countAnnouncements"]; ?> sprawdzonych ofert pracy</label><br>
-                    <label class="blockquote float-end text-primary-emphasis d-sm-block d-none">od najlepszych pracodawców</label>
+                    <label class="blockquote float-sm-end text-primary-emphasis d-sm-block">od najlepszych pracodawców</label>
                 </div>
             </div>
         </div>

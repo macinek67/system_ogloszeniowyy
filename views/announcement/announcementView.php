@@ -23,7 +23,7 @@
         echo $data["headerDesktop"];
         echo $data["headerMobile"];
     ?>
-    <div class="bodyThemeContainer w-100 position-absolute fixed bg-primary bg-opacity-50 z-n1"></div>
+    <div class="bodyThemeContainer w-100 position-absolute fixed bg-<?php echo $data["theme"]; ?> bg-opacity-50 z-n1"></div>
 
     <!--Content-->
     <div class="container-lg mt-5 mb-4 column-gap-4 d-lg-flex">

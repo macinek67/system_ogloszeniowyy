@@ -1,5 +1,5 @@
 <div class="bg-white p-2 pt-4 ps-sm-4 rounded-4 pb-4">
-    <label class="h4 fw-bolder text-primary-emphasis">Twój zakres obowiązków</label>
+    <label class="h4 fw-bolder text-<?php echo $data["theme"]; ?>-emphasis">Twój zakres obowiązków</label>
     <div>
         <?php
             foreach($data["list"] as $data)

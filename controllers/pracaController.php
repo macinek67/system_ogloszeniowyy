@@ -25,6 +25,7 @@
             $mainPanelHeaderData["earnings"] = $announcement[0]["earnings"];
             $mainPanelHeaderData["company_name"] = $companyData["short_name"];
             $mainPanelHeaderData["company_logo"] = $companyData["logo"];
+            $mainPanelHeaderData["theme"] = $announcement[0]["theme_color"];
             $mainPanel_data["mainPanel_header"] = loader::loadView("announcement", "mainPanel_headerView", $mainPanelHeaderData, true);
 
 
@@ -36,6 +37,7 @@
             $mainPanelCoreInfoData["workType"] = $am->getAnnouncementWorkType($announcement[0]["work_type_id"]);
             $mainPanelCoreInfoData["workingTime"] = $am->getAnnouncementWorkingTime($announcement[0]["working_time_id"]);
             $mainPanelCoreInfoData["positionLevel"] = $am->getAnnouncementPositionLevel($announcement[0]["position_level_id"]);
+            $mainPanelCoreInfoData["theme"] = $announcement[0]["theme_color"];
             $mainPanel_data["mainPanel_coreInfo"] = loader::loadView("announcement", "mainPanel_coreInfoView", $mainPanelCoreInfoData, true);
 
 
@@ -45,9 +47,11 @@
 
             $responsibilities = $am->getAnnouncementResponsibilities($announcement[0]["announcement_id"]);
             $responsibilitiesData["list"] = [];
+            $responsibilitiesData["theme"] = $announcement[0]["theme_color"];
             foreach($responsibilities as $responsibility)
             {
                 $responsibilityData["content"] = $responsibility["description"];
+                $responsibilityData["theme"] = $announcement[0]["theme_color"];
                 array_push($responsibilitiesData["list"], loader::loadView("announcement", "singleResponsibilityView", $responsibilityData, true));
             }
             $mainPanel_data["mainPanel_responsibilities"] = loader::loadView("announcement", "mainPanel_responsibilitiesView", $responsibilitiesData, true);
@@ -55,9 +59,11 @@
 
             $requirements = $am->getAnnouncementRequirements($announcement[0]["announcement_id"]);
             $requirementsData["list"] = [];
+            $requirementsData["theme"] = $announcement[0]["theme_color"];
             foreach($requirements as $requirement)
             {
                 $requirementData["content"] = $requirement["description"];
+                $requirementData["theme"] = $announcement[0]["theme_color"];
                 array_push($requirementsData["list"], loader::loadView("announcement", "singleRquirementView", $requirementData, true));
             }
             $mainPanel_data["mainPanel_requirements"] = loader::loadView("announcement", "mainPanel_requirementsView", $requirementsData, true);
@@ -65,9 +71,11 @@
 
             $benefits = $am->getAnnouncementBenefits($announcement[0]["announcement_id"]);
             $benefitsData["list"] = [];
+            $benefitsData["theme"] = $announcement[0]["theme_color"];
             foreach($benefits as $benefit)
             {
                 $benefitData["content"] = $benefit["description"];
+                $benefitData["theme"] = $announcement[0]["theme_color"];
                 array_push($benefitsData["list"], loader::loadView("announcement", "singleBenefitView", $benefitData, true));
             }
             $mainPanel_data["mainPanel_benefits"] = loader::loadView("announcement", "mainPanel_benefitsView", $benefitsData, true);
@@ -79,6 +87,7 @@
             $mainPanel_data["mainPanel_footer"] = loader::loadView("announcement", "mainPanel_footerView", $mainPanelFooterData, true);
 
 
+            $sidePanelData["theme"] = $announcement[0]["theme_color"];
             $sidePanelData["announcement_id"] = $announcement[0]["announcement_id"];
             $mainPanel_data["sidePanel"] = loader::loadView("announcement", "sidePanelView", $sidePanelData, true);
 
@@ -92,6 +101,7 @@
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
 
 
+            $data["theme"] = $announcement[0]["theme_color"];
             loader::loadView("announcement", "announcementView", $data);
         }
 
@@ -160,7 +170,13 @@
             $data["companies"] = loader::loadView("mainPage", "bestCompaniesListView", $companies_data, true);
 
 
-            $categories_data["categoryList"] = loader::loadView("mainPage", "singleCategoryView", null, true);
+            $popularCategories = $am->getAnnouncementCategoriesByPopularity();
+            $popularCategoriesViewsList = [];
+            foreach($popularCategories as $category)
+            {
+                array_push($popularCategoriesViewsList, loader::loadView("mainPage", "singleCategoryView", $category, true));
+            }
+            $categories_data["categoryList"] = $popularCategoriesViewsList;
             $data["categories"] = loader::loadView("mainPage", "bestCategoriesView", $categories_data, true);
 
             

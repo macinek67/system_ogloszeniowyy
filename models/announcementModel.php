@@ -218,6 +218,16 @@
                 return $row["name"];
             }
         }
+
+        public function getAnnouncementCategoriesByPopularity()
+        {
+            $result = $this->connection->query("SELECT category_id, name, image, COUNT(*) as count FROM announcement_category JOIN announcement USING(category_id) GROUP BY category_id ORDER BY count DESC LIMIT 50");
+            $categoryData = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($categoryData, $row);
+            }
+            return $categoryData;
+        }
     }
 
 ?>

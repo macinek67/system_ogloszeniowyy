@@ -6,13 +6,10 @@
 
     <div class="mt-5 mb-4 p-2 d-flex overflow-hidden">
         <?php
-            echo $data["categoryList"];
-            echo $data["categoryList"];
-            echo $data["categoryList"];
-            echo $data["categoryList"];
-            echo $data["categoryList"];
-            echo $data["categoryList"];
-            echo $data["categoryList"];
+            foreach($data["categoryList"] as $category)
+            {
+                echo $category;
+            }
         ?>
     </div>
 
