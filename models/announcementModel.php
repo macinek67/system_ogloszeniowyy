@@ -97,7 +97,7 @@
                         $query = $query . $type . "='" . $value . "' OR ";
 
                     $query = substr($query, 0, -3);
-                    $query = $query . ") AND ";
+                    $query = $query . ") OR ";
 
                     continue;
                 }
@@ -109,7 +109,7 @@
             $query = substr($query, 0, -4);
 
             if($includePages == true)
-                $query = $query . "LIMIT " . ANN_PER_PAGE . " OFFSET " . ($filters["page"] * ANN_PER_PAGE) - ANN_PER_PAGE;
+                $query = $query . " LIMIT " . ANN_PER_PAGE . " OFFSET " . ($filters["page"] * ANN_PER_PAGE) - ANN_PER_PAGE;
                 
             $result = $this->connection->query($query);
             $matchingAnnouncements = [];
@@ -222,6 +222,26 @@
         public function getAnnouncementCategoriesByPopularity()
         {
             $result = $this->connection->query("SELECT category_id, name, image, COUNT(*) as count FROM announcement_category JOIN announcement USING(category_id) GROUP BY category_id ORDER BY count DESC LIMIT 50");
+            $categoryData = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($categoryData, $row);
+            }
+            return $categoryData;
+        }
+
+        public function getCategories()
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_category");
+            $categoryData = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($categoryData, $row);
+            }
+            return $categoryData;
+        }
+
+        public function getSubcategories()
+        {
+            $result = $this->connection->query("SELECT * FROM announcement_subcategory");
             $categoryData = [];
             while($row = $result->fetch_assoc()) {
                 array_push($categoryData, $row);

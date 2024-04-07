@@ -9,11 +9,9 @@
     <div class="col-lg-10 col-12 bg-light rounded-4 shadow-sm border m-auto text-center">
         <div class="ps-sm-4 pe-sm-4 ms-sm-3 me-sm-3 p-3">
             <div class="dropdown mb-2">
-                <button class="btn border-dark dropdown-toggle w-100 p-3 rounded-3 fw-bold shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">Kategoria</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <button class="btn border-dark dropdown-toggle w-100 p-3 rounded-3 fw-bold shadow-sm border" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Kategoria</button>
+                <ul class="dropdown-menu w-100 shadow ps-2 categoryDropDown overflow-auto border border-2">
+                    <?php echo $data["categoryDropdown"]; ?>
                 </ul>
             </div>
             <div>
@@ -45,5 +43,9 @@
     .btn-alt.active {
         background: #025fd9;
         color: #ffffff;
+    }
+
+    .categoryDropDown {
+        height: 225px;
     }
 </style>

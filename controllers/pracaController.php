@@ -143,7 +143,10 @@
             $data["headerInfo"] = loader::loadView("mainPage", "headerInfoView", $headerInfoData, true);
 
 
-            $data["searchSection"] = loader::loadView("mainPage", "searchSectionView", null, true);
+            $categoryDropdownData["categories"] = $am->getCategories();
+            $categoryDropdownData["subcategories"] = $am->getSubcategories();
+            $searchSectionData["categoryDropdown"] = loader::loadView("mainPage", "categoryDropdownView", $categoryDropdownData, true);
+            $data["searchSection"] = loader::loadView("mainPage", "searchSectionView", $searchSectionData, true);
 
 
             $newestAnnouncements = $am->getNewestAnnouncements();
