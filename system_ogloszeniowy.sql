@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 01:30 PM
+-- Generation Time: Apr 10, 2024 at 07:26 PM
 -- Wersja serwera: 10.4.32-MariaDB
--- Wersja PHP: 8.2.12
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `login_session`
@@ -386,19 +386,26 @@ CREATE TABLE IF NOT EXISTS `user_course` (
 --
 
 CREATE TABLE IF NOT EXISTS `user_data` (
-  `user_data_id` int(10) UNSIGNED NOT NULL,
+  `user_data_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(25) DEFAULT NULL,
   `surname` varchar(25) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
-  `telephone_number` decimal(9,0) DEFAULT NULL,
-  `pfp` text DEFAULT NULL,
+  `telephone_number` varchar(9) DEFAULT NULL,
+  `pfp` text DEFAULT 'deafult.jpg',
   `city` varchar(35) DEFAULT NULL,
   `currnent_occupation` varchar(75) DEFAULT NULL,
   `summary` text DEFAULT NULL,
   PRIMARY KEY (`user_data_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_data`
+--
+
+INSERT INTO `user_data` (`user_data_id`, `user_id`, `name`, `surname`, `birth_date`, `telephone_number`, `pfp`, `city`, `currnent_occupation`, `summary`) VALUES
+(18, 6, 'Marcin', 'Gawron', NULL, NULL, 'deafult.jpg', 'Kraków', '', 'essa krutko');
 
 -- --------------------------------------------------------
 
@@ -445,12 +452,22 @@ CREATE TABLE IF NOT EXISTS `user_experience` (
 --
 
 CREATE TABLE IF NOT EXISTS `user_language` (
-  `language_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL AUTO_INCREMENT,
   `language` varchar(35) NOT NULL,
-  `level` enum('podstawowy',' średnio-zaawansowany','zaawansowany','') NOT NULL,
+  `level` enum('podstawowy','średnio-zaawansowany','zaawansowany','') NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`language_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_language`
+--
+
+INSERT INTO `user_language` (`language_id`, `language`, `level`, `user_id`) VALUES
+(6, 'Hiszpański', 'średnio-zaawansowany', 6),
+(7, 'Angielski', 'zaawansowany', 6),
+(8, 'Niemiecki', 'podstawowy', 6);
 
 -- --------------------------------------------------------
 
@@ -462,9 +479,18 @@ CREATE TABLE IF NOT EXISTS `user_link` (
   `link_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NOT NULL,
   `name` enum('Portfolio','Strona osobista','Strona firmowa','Projekt','Link do profilu społecznościowego','Inny') NOT NULL,
+  `url` text NOT NULL,
   PRIMARY KEY (`link_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_link`
+--
+
+INSERT INTO `user_link` (`link_id`, `user_id`, `name`, `url`) VALUES
+(1, 6, 'Link do profilu społecznościowego', 'https://github.com/macinek67'),
+(2, 6, 'Strona firmowa', 'https://www.pepper.pl/nowe');
 
 -- --------------------------------------------------------
 
@@ -520,7 +546,14 @@ CREATE TABLE IF NOT EXISTS `user_skill` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`skill_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_skill`
+--
+
+INSERT INTO `user_skill` (`skill_id`, `user_id`, `name`) VALUES
+(1, 6, 'czytanie');
 
 --
 -- Constraints for dumped tables
