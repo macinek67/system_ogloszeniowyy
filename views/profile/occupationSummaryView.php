@@ -1,4 +1,4 @@
-<form class="bg-white shadow-sm" method="post" action="">
+<form class="bg-white shadow-sm" method="post" action="<?php echo ROOT_URL . "konto/saveOccupationSummaryData"; ?>">
     <div class="col bg-light bg-gradient ps-3 pt-2">
         <label class="h5 text-primary-emphasis w-75">Podsumowanie zawodowe</label>
         <a onclick="ShowUserSection()" class="float-end me-2 w-10 text-black">
@@ -13,11 +13,7 @@
     <div class="userSectionEditHidden col p-3">
         <div class="d-xl-flex d-lg-flex d-md-flex d-sm-flex d-column">
             <label class="h6 pe-5">Opis:</label>
-            <textarea class="form-control w-100" rows="6"></textarea>
-        </div>
-        <div class="d-xl-flex d-lg-flex d-md-flex d-sm-flex d-column pt-4">
-            <label class="h6 pe-5">Aktualna pozycja zawodowa:</label>
-            <select class="w-100"></select>
+            <textarea class="form-control w-100" name="summary" rows="6"><?php echo $data["summary"]; ?></textarea>
         </div>
         <div class="col-12 text-end pt-4 pb-2">
             <a onclick="HideUserSection()" class="btn btn-secondary rounded-0 me-1">Anuluj</a>

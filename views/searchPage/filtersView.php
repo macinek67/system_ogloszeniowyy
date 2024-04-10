@@ -116,7 +116,21 @@
                 </div>
             </div>
 
-            <input id="changePageFormControl" type="hidden" name="page" value="1">
+            <input type="hidden" id="changePageFormControl" name="page" value="<?php echo $data["page"]; ?>">
+            <input type="hidden" name="position_name" value="<?php echo $data["position_name"]; ?>">
+            <input type="hidden" name="city" value="<?php echo $data["city"]; ?>">
+
+            <?php
+                foreach($data["categories"] as $catgory_id)
+                {
+                    echo "<input type='hidden' name='category_id[]' value='$catgory_id'>";
+                }
+
+                foreach($data["subcategories"] as $subcatgory_id)
+                {
+                    echo "<input type='hidden' name='subcategory_id[]' value='$subcatgory_id'>";
+                }
+            ?>
 
             <div class="pt-3 pb-3 ps-4 pe-4 border border-top-0 rounded-bottom-2">
                 <button class="btn-alt border-0 rounded-5 p-3 w-100"><label class="h5 fw-bolder mb-0"><i class="bi bi-search me-1"></i> Pokaż oferty</label></button>

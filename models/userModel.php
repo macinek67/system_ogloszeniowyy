@@ -85,6 +85,118 @@
             }
             header("Location: " . ROOT_URL . "login/zaloguj/" . $code);
         }
+
+        public function getUserData($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_data WHERE user_id='$user_id'");
+            if ($row = $result->fetch_assoc()) {
+                return $row;
+            }
+            
+            $result = $this->connection->query("INSERT INTO user_data(user_id) VALUES('$user_id')");
+            
+            $result = $this->connection->query("SELECT * FROM user_data WHERE user_id='$user_id'");
+            if ($row = $result->fetch_assoc()) {
+                return $row;
+            }
+        }
+
+        public function saveUserPersonalData($user_id)
+        {
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/" . explode("/", $_SERVER['REDIRECT_URL'])[1] . "/application_images/";
+
+            if($_FILES["pfp"]["size"] != 0)
+            {
+                $uploadfile = $path . basename($_FILES['pfp']['name']);
+                move_uploaded_file($_FILES['pfp']['tmp_name'], $uploadfile);
+    
+                $fileName = basename($_FILES['pfp']['name']);
+    
+                $result = $this->connection->query("UPDATE user_data SET name='$_POST[name]', surname='$_POST[surname]', currnent_occupation='$_POST[currentOccupation]', city='$_POST[city]', pfp='$fileName' WHERE user_id='$user_id'");
+            }
+            else
+            {
+                $result = $this->connection->query("UPDATE user_data SET name='$_POST[name]', surname='$_POST[surname]', currnent_occupation='$_POST[currentOccupation]', city='$_POST[city]' WHERE user_id='$user_id'");
+            }
+        }
+
+        public function getUserEmail($user_id)
+        {
+            $result = $this->connection->query("SELECT email FROM user WHERE user_id='$user_id'");
+            if ($row = $result->fetch_assoc()) {
+                return $row;
+            }
+        }
+
+        public function saveUserContactData($data, $user_id)
+        {
+            $result = $this->connection->query("UPDATE user_data SET telephone_number='$data[telephone_number]', birth_date='$data[birth_date]' WHERE user_id='$user_id'");
+        }
+
+        public function saveUserOccupationSummaryData($data, $user_id)
+        {
+            $result = $this->connection->query("UPDATE user_data SET summary='$data[summary]' WHERE user_id='$user_id'");
+        }
+
+        public function saveUserSkill($data, $user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_skill(user_id, name) VALUES('$user_id', '$data[name]')");
+        }
+
+        public function getUserSkills($user_id)
+        {
+            $result = $this->connection->query("SELECT skill_id, name FROM user_skill WHERE user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function removeUserSkill($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_skill WHERE skill_id='$data'");
+        }
+
+        public function saveUserLink($user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_link(user_id, name, url) VALUES('$user_id', '$_POST[name]', '$_POST[url]')");
+        }
+
+        public function getUserLinks($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_link WHERE user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function removeUserLink($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_link WHERE link_id='$data'");
+        }
+
+        public function getUserLanguages($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_language WHERE user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function saveUserLanguage($user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_language(user_id, language, level) VALUES('$user_id', '$_POST[language]', '$_POST[level]')");
+        }
+
+        public function removeUserLanguage($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_language WHERE language_id='$data'");
+        }
     }
 
 ?>

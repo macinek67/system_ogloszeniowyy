@@ -207,10 +207,6 @@
 
             $am = new announcementModel();
 
-            // echo "<pre>";
-            // print_r($this->filters);
-            // echo "</pre>";
-
             $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
             $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
 
@@ -223,6 +219,31 @@
             $filters_data["checked-contract_type"] = $this->filters["contract_type_id"];
             $filters_data["checked-working_time"] = $this->filters["working_time_id"];
             $filters_data["checked-work_type"] = $this->filters["work_type_id"];
+            $filters_data["page"] = 1;
+            if(isset($_POST["page"]))
+            {
+                $filters_data["page"] = $_POST["page"];
+            }
+            $filters_data["position_name"] = "";
+            if(isset($_POST["position_name"]))
+            {
+                $filters_data["position_name"] = $_POST["position_name"];
+            }
+            $filters_data["city"] = "";
+            if(isset($_POST["city"]))
+            {
+                $filters_data["city"] = $_POST["city"];
+            }
+            $filters_data["categories"] = [];
+            if(isset($_POST["category_id"]))
+            {
+                $filters_data["categories"] = $_POST["category_id"];
+            }
+            $filters_data["subcategories"] = [];
+            if(isset($_POST["subcategory_id"]))
+            {
+                $filters_data["subcategories"] = $_POST["subcategory_id"];
+            }
             $data["filters"] = loader::loadView("searchPage", "filtersView", $filters_data, true);
 
 
