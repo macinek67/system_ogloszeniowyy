@@ -37,7 +37,13 @@
             $data["educationView"] = loader::loadView("profile", "educationView", $parameters, true);
 
 
-            $data["coursesView"] = loader::loadView("profile", "coursesView", $parameters, true);
+            $courses = $um->getUserCourses($_SESSION["user_id"]);
+            $coursesData = [];
+            foreach($courses as $course)
+            {
+                array_push($coursesData, loader::loadView("profile", "singleCourseView", $course, true));
+            }
+            $data["coursesView"] = loader::loadView("profile", "coursesView", $coursesData, true);
 
             $skillsData = $um->getUserSkills($_SESSION["user_id"]);
             $data["skillsView"] = loader::loadView("profile", "skillsView", $skillsData, true);
@@ -172,6 +178,26 @@
             session_start();
 
             $um->removeUserLanguage($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function saveCourse($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->saveUserCourse($_SESSION["user_id"]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function removeCourse($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->removeUserCourse($parameters[0]);
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2024 at 07:26 PM
+-- Generation Time: Apr 12, 2024 at 09:36 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `login_session`
@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`user_id`, `email`, `password`, `role_id`) VALUES
 (3, 'tak@gmail.com', '$2y$10$SvpIfsvrX8QtCI7CjC00hOQf.qzzRHHmonOMxmLFshLW3UGzgPAvq', 2),
-(6, 'xd@gmail.com', '$2y$10$CgPJaZH9M6X/Hsa0aH9dXecruiNvcZGK3gd8.F1OTEBOVSi89mVbW', 2);
+(6, 'xd@gmail.com', '$2y$10$CgPJaZH9M6X/Hsa0aH9dXecruiNvcZGK3gd8.F1OTEBOVSi89mVbW', 1);
 
 -- --------------------------------------------------------
 
@@ -377,7 +377,15 @@ CREATE TABLE IF NOT EXISTS `user_course` (
   `period_end` date NOT NULL,
   PRIMARY KEY (`course_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_course`
+--
+
+INSERT INTO `user_course` (`course_id`, `user_id`, `name`, `organizer`, `period_start`, `period_end`) VALUES
+(2, 6, 'Podstawy systemu operacyjnego Linux', 'Biedronka', '2020-05-15', '2020-06-15'),
+(3, 6, 'Prawo jazdy kategorii B', 'Ja sam', '2023-05-12', '2020-06-15');
 
 -- --------------------------------------------------------
 
@@ -417,8 +425,8 @@ CREATE TABLE IF NOT EXISTS `user_education` (
   `education_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(10) UNSIGNED NOT NULL,
   `school_name` varchar(75) NOT NULL,
-  `city` varchar(35) NOT NULL,
   `level` enum('podstawowe','zawodowe','średnie','licencjat','inżynier','magister','doktor','doktor habilitowany','profesor') NOT NULL,
+  `direction` varchar(50) NOT NULL,
   `specialization` varchar(75) NOT NULL,
   `period_start` date NOT NULL,
   `period_end` date NOT NULL,
@@ -458,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `user_language` (
   `user_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`language_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `user_language`

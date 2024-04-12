@@ -197,6 +197,26 @@
         {
             $result = $this->connection->query("DELETE FROM user_language WHERE language_id='$data'");
         }
+
+        public function saveUserCourse($user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_course(user_id, name, organizer, period_start, period_end) VALUES('$user_id', '$_POST[name]', '$_POST[organizer]', '$_POST[period_start]', '$_POST[period_end]')");
+        }
+
+        public function getUserCourses($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_course WHERE user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function removeUserCourse($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_course WHERE course_id='$data'");
+        }
     }
 
 ?>

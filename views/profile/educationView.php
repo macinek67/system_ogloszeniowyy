@@ -14,36 +14,38 @@
     <div class="userSectionEditHidden col p-3">
         <div class="col d-xl-flex d-lg-flex d-md-flex d-column">
             <label class="h6 m-auto col-md-2">Nazwa szkoły:</label>
-            <input type="text" placeholder="Nazwa szkoły" class="form-control">
+            <input type="text" name="school_name" placeholder="Nazwa szkoły" class="form-control">
         </div>
         <div class="col d-xl-flex d-lg-flex d-md-flex d-column pt-3">
             <label class="h6 m-auto col-md-2">Poziom wykształcenia:</label>
-            <select class="form-control"></select>
+            <select name="level" class="form-control">
+                <option value="podstawowe">podstawowe</option>
+                <option value="zawodowe">zawodowe</option>
+                <option value="średnie">średnie</option>
+                <option value="licencjat">licencjat</option>
+                <option value="inżynier">inżynier</option>
+                <option value="magister">magister</option>
+                <option value="doktor">doktor</option>
+                <option value="doktor habilitowany">doktor habilitowany</option>
+                <option value="profesor">profesor</option>
+            </select>
         </div>
         <div class="col d-xl-flex d-lg-flex d-md-flex d-column pt-3">
             <label class="h6 m-auto col-md-2">Kierunek:</label>
-            <input type="text" placeholder="Kierunek" class="form-control">
+            <input type="text" name="direction" placeholder="Kierunek" class="form-control">
         </div>
         <div class="col d-xl-flex d-lg-flex d-md-flex d-column pt-3">
             <label class="h6 m-auto col-md-2">Specjalizacja:</label>
-            <input type="text" placeholder="Specjalizacja" class="form-control">
+            <input type="text" name="specialization" placeholder="Specjalizacja" class="form-control">
         </div>
         <div class="col d-md-flex pt-3">
             <label class="h6 m-auto col-md-2">Okres:</label>
-            <div class="d-flex col-md-5 col-12 pb-md-0 pb-1">
-                <label class="col-2">od</label>
-                <select class="col-5"></select>
-                <select class="col-5 ms-1"></select>
+            <div class="d-flex col-md-12 col-12 pb-md-0 pb-1">
+                <label class="me-2 mt-1">od</label>
+                <input type="text" name="period_start" class="col-4 ms-1 border border-secondary rounded-2 p-1" placeholder="yyyy-mm-dd">
+                <label class="ms-2 me-2 mt-1">do</label>
+                <input type="text" name="period_end" class="col-4 ms-1 border border-secondary rounded-2 p-1" placeholder="yyyy-mm-dd">
             </div>
-            <div class="d-flex col-md-5 col-12">
-                <label class="col-2 text-md-center">do</label>
-                <select class="col-5"></select>
-                <select class="col-5 ms-1"></select>
-            </div>
-        </div>
-        <div class="col-12 float-end text-end pb-3">
-            <input type="checkbox">
-            <label>trwa nadal</label>
         </div>
         <div class="col-12 text-end pt-4 pb-2">
             <a onclick="HideUserSection()" class="btn btn-secondary rounded-0 me-1">Anuluj</a>

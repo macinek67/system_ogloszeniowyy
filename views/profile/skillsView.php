@@ -22,10 +22,25 @@
                 foreach($data as $skill)
                 {
                     $href = ROOT_URL . "konto/removeSkill/" . $skill["skill_id"];
-                    echo "<a href='$href' class='btn btn-primary me-2 mt-2'>$skill[name] <i class='bi bi-x-lg ms-1'></i></a>";
+                    echo "<a href='$href' class='btn btn-alt me-2 mt-2'>$skill[name] <i class='bi bi-x-lg ms-1'></i></a>";
                 }
             ?>
         </div>
     </div>
 
 </form>
+
+<style>
+    .btn-alt {
+        color: white;
+        background-color: #0049a8;
+    }
+
+    .btn-alt:hover,
+    .btn-alt:active,
+    .btn-alt:focus,
+    .btn-alt.active {
+        background: #025fd9;
+        color: #ffffff;
+    }
+</style>
