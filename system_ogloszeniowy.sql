@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2024 at 09:36 PM
+-- Generation Time: Apr 14, 2024 at 07:08 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `login_session`
@@ -432,7 +432,15 @@ CREATE TABLE IF NOT EXISTS `user_education` (
   `period_end` date NOT NULL,
   PRIMARY KEY (`education_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_education`
+--
+
+INSERT INTO `user_education` (`education_id`, `user_id`, `school_name`, `level`, `direction`, `specialization`, `period_start`, `period_end`) VALUES
+(2, 6, 'Zespół Szkół Technicznych i Ogólnokształcacych im. Jana Pawła II', 'zawodowe', 'Technik Programista', 'Informatyka', '2020-09-01', '2025-06-23'),
+(3, 6, 'Szkoła Podstawowa nr 3 im. ks. płk. Józefa Jońca w Limanowej', 'podstawowe', '', '', '2012-09-01', '2020-06-23');
 
 -- --------------------------------------------------------
 
@@ -445,13 +453,20 @@ CREATE TABLE IF NOT EXISTS `user_experience` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `position` varchar(75) NOT NULL,
   `company` varchar(50) NOT NULL,
-  `localization` varchar(35) NOT NULL,
+  `city` varchar(35) NOT NULL,
   `period_start` date NOT NULL,
   `period_end` date NOT NULL,
   `duties` text NOT NULL,
   PRIMARY KEY (`experience_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `user_experience`
+--
+
+INSERT INTO `user_experience` (`experience_id`, `user_id`, `position`, `company`, `city`, `period_start`, `period_end`, `duties`) VALUES
+(2, 6, 'Junior Programista', 'Qarbon IT', 'Kraków', '2023-05-12', '2023-12-17', 'dużo roboty i wgl, mało siedzenia na dupie, praktyka 2 miesiace');
 
 -- --------------------------------------------------------
 
@@ -554,14 +569,17 @@ CREATE TABLE IF NOT EXISTS `user_skill` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`skill_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `user_skill`
 --
 
 INSERT INTO `user_skill` (`skill_id`, `user_id`, `name`) VALUES
-(1, 6, 'czytanie');
+(5, 6, 'Photoshop 2021'),
+(6, 6, 'Excel'),
+(7, 6, 'Microsoft Access'),
+(8, 6, 'XAMPP');
 
 --
 -- Constraints for dumped tables

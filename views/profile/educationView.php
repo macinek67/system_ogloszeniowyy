@@ -1,4 +1,4 @@
-<form class="bg-white shadow-sm" method="post" action="">
+<form class="bg-white shadow-sm" method="post" action="<?php echo ROOT_URL . "konto/saveEducation"; ?>">
 
     <div class="col bg-light bg-gradient ps-3 pt-2">
         <label class="h5 text-primary-emphasis w-75">Wykształcenie</label>
@@ -9,6 +9,15 @@
 
     <div class="userSectionEditVisible col p-3">
         <div class="form-text">Edukacja wciąż jest istotna. Rekrutujący może poznać poziom wiedzy teoretycznej, która może być przydatna lub wymagana na danym stanowisku. Jeśli masz już określone doświadczenie zawodowe, ogranicz sekcję edukacji do studiów.</div>
+        <hr>
+        <div>
+        <?php
+                foreach($data as $education)
+                {
+                    echo $education;
+                }
+            ?>
+        </div>
     </div>
 
     <div class="userSectionEditHidden col p-3">

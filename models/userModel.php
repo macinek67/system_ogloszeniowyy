@@ -217,6 +217,46 @@
         {
             $result = $this->connection->query("DELETE FROM user_course WHERE course_id='$data'");
         }
+
+        public function saveUserEducation($user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_education(user_id, school_name, level, direction, specialization, period_start, period_end) VALUES('$user_id', '$_POST[school_name]', '$_POST[level]', '$_POST[direction]', '$_POST[specialization]', '$_POST[period_start]', '$_POST[period_end]')");
+        }
+
+        public function getUserEducation($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_education WHERE user_id='$user_id' ORDER BY education_id DESC");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function removeUserEducation($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_education WHERE education_id='$data'");
+        }
+
+        public function saveUserOccupationExperience($user_id)
+        {
+            $result = $this->connection->query("INSERT INTO user_experience(user_id, position, city, company, duties, period_start, period_end) VALUES('$user_id', '$_POST[position]', '$_POST[city]', '$_POST[company]', '$_POST[duties]', '$_POST[period_start]', '$_POST[period_end]')");
+        }
+
+        public function getUserOccupationExperience($user_id)
+        {
+            $result = $this->connection->query("SELECT * FROM user_experience WHERE user_id='$user_id' ORDER BY experience_id DESC");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function removeUserOccupationExperience($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_experience WHERE experience_id='$data'");
+        }
     }
 
 ?>

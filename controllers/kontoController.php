@@ -31,10 +31,22 @@
             $data["occupationSummary"] = loader::loadView("profile", "occupationSummaryView", $userData, true);
 
 
-            $data["occupationExperience"] = loader::loadView("profile", "occupationExperienceView", $parameters, true);
+            $experience = $um->getUserOccupationExperience($_SESSION["user_id"]);
+            $experienceData = [];
+            foreach($experience as $singleExperience)
+            {
+                array_push($experienceData, loader::loadView("profile", "singleOccupationExperienceView", $singleExperience, true));
+            }
+            $data["occupationExperience"] = loader::loadView("profile", "occupationExperienceView", $experienceData, true);
 
 
-            $data["educationView"] = loader::loadView("profile", "educationView", $parameters, true);
+            $education = $um->getUserEducation($_SESSION["user_id"]);
+            $educationData = [];
+            foreach($education as $singleEducation)
+            {
+                array_push($educationData, loader::loadView("profile", "singleEducationView", $singleEducation, true));
+            }
+            $data["educationView"] = loader::loadView("profile", "educationView", $educationData, true);
 
 
             $courses = $um->getUserCourses($_SESSION["user_id"]);
@@ -198,6 +210,46 @@
             session_start();
 
             $um->removeUserCourse($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function saveEducation($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->saveUserEducation($_SESSION["user_id"]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function removeEducation($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->removeUserEducation($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function saveOccupationExperience($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->saveUserOccupationExperience($_SESSION["user_id"]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function removeOccupationExperience($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->removeUserOccupationExperience($parameters[0]);
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
