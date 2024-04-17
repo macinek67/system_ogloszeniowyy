@@ -1,5 +1,6 @@
 <?php
     require_once("models/userModel.php");
+    require_once("models/announcementModel.php");
 
     class kontoController
     {
@@ -10,13 +11,18 @@
 
             if(!isset($_SESSION["user_id"]))
             {
-                header("Location: " . ROOT_URL . "praca/glowna");
+                header("Location: " . ROOT_URL . "login/email");
+            }
+            else if($_SESSION["user_role"] == 1)
+            {
+                header("Location: " . ROOT_URL . "konto/panel_administratora");
             }
 
             $userData = $um->getUserData($_SESSION["user_id"]);
 
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
 
 
             $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
@@ -86,21 +92,84 @@
 
         public function zapisane($parameters)
         {
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $am = new announcementModel();
+            $um = new userModel();
+            session_start();
+
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+
+
             $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
-            $data["offersList"] = loader::loadView("saved", "singleSavedView", null, true);
+
+
+            $announcementList = $am->getSavedActiveAnnouncements($_SESSION["user_id"]);
+            $announcementData = [];
+            foreach($announcementList as $announcement)
+            {
+                array_push($announcementData, loader::loadView("saved", "singleSavedView", $announcement, true));
+            }
+            $data["activeList"] = $announcementData;
+
+            $announcementList = $am->getSavedExpiredAnnouncements($_SESSION["user_id"]);
+            $announcementData = [];
+            foreach($announcementList as $announcement)
+            {
+                array_push($announcementData, loader::loadView("saved", "singleSavedView", $announcement, true));
+            }
+            $data["expiredList"] = $announcementData;
+
+
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
+
+
             loader::loadView("saved", "savedView", $data);
+        }
+
+        public function removeSaved($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            $um->removeUserSaved($parameters[0]);
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
 
         public function zaaplikowane($parameters)
         {
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $am = new announcementModel();
+            $um = new userModel();
+            session_start();
+
+
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+
+
             $data["switchView"] = loader::loadView("profile", "switchContentView", null, true);
-            $data["offersList"] = loader::loadView("applied", "singleAppliedView", null, true);
+
+
+            $announcementList = $am->getAppliedActiveAnnouncements($_SESSION["user_id"]);
+            $announcementData = [];
+            foreach($announcementList as $announcement)
+            {
+                array_push($announcementData, loader::loadView("applied", "singleAppliedView", $announcement, true));
+            }
+            $data["activeList"] = $announcementData;
+
+            $announcementList = $am->getAppliedExpiredAnnouncements($_SESSION["user_id"]);
+            $announcementData = [];
+            foreach($announcementList as $announcement)
+            {
+                array_push($announcementData, loader::loadView("applied", "singleAppliedView", $announcement, true));
+            }
+            $data["expiredList"] = $announcementData;
+
+
             $data["footer"] = loader::loadView("footer", "footerView", null, true);
+
+
             loader::loadView("applied", "appliedView", $data);
         }
 

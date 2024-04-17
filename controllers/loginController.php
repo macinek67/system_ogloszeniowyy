@@ -6,8 +6,10 @@
     {
         public function email()
         {
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $um = new userModel();
+
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
 
             $data["content"] = loader::loadView("loginPage", "detectEmailView", null, true);
 
@@ -17,14 +19,15 @@
         public function zarejestruj($parameters)
         {
             $um = new userModel();
+
             if($parameters[0] == "" || !($um->verifySessionCode($parameters[0], "Up")))
             {
                 header("Location: " . ROOT_URL . "login/email");
                 return;
             }
 
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
 
             $content_data["email"] = $um->getSessionEmail($parameters[0], "Up");
             $content_data["code"] = $parameters[0];
@@ -36,14 +39,15 @@
         public function zaloguj($parameters)
         {
             $um = new userModel();
+
             if($parameters[0] == "" || !($um->verifySessionCode($parameters[0], "In")))
             {
                 header("Location: " . ROOT_URL . "login/email");
                 return;
             }
 
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
 
             $content_data["email"] = $um->getSessionEmail($parameters[0], "In");
             $content_data["code"] = $parameters[0];

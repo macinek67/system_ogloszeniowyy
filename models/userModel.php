@@ -257,6 +257,34 @@
         {
             $result = $this->connection->query("DELETE FROM user_experience WHERE experience_id='$data'");
         }
+
+        public function removeUserSaved($data)
+        {
+            $result = $this->connection->query("DELETE FROM user_saved WHERE saved_id='$data'");
+        }
+
+        public function getUserPermission()
+        {
+            session_start();
+            $headerData = [];
+
+            if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] == 1)
+            {
+                $headerData["titlePC"] = "Panel admina";
+                $headerData["titlePhone"] = "Admin";
+                $headerData["href"] = "konto/panel_administratora";
+                $headerData["icon"] = "bi-gear";
+            }
+            else
+            {
+                $headerData["titlePC"] = "Moje konto";
+                $headerData["titlePhone"] = "Konto";
+                $headerData["href"] = "konto/profil";
+                $headerData["icon"] = "bi-person";
+            }
+
+            return $headerData;
+        }
     }
 
 ?>

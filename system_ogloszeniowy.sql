@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 07:08 PM
+-- Generation Time: Apr 17, 2024 at 07:12 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 INSERT INTO `announcement` (`announcement_id`, `company_id`, `localization_link`, `category_id`, `subcategory_id`, `position_name`, `earnings`, `position_level_id`, `city`, `contract_type_id`, `working_time_id`, `work_type_id`, `start_date`, `end_date`, `theme_color`) VALUES
 (2, 1, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-03-17 12:37:43', '2024-03-19 23:59:00', 'dark'),
 (3, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 1, 1, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-04-05 12:37:43', '2024-04-08 23:59:00', 'danger'),
-(4, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 2, 2, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-04-05 12:37:43', '2024-04-08 23:59:00', 'primary');
+(4, 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d558.9586037178242!2d20.422488659585543!3d49.70542410001207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47160b792e405b0d%3A0x6e6ed68f3365bc14!2sVapeON!5e0!3m2!1spl!2spl!4v1708514084730!5m2!1spl!2spl', 2, 2, 'Programista (DevOps - System Pasywnej Lokacji)', '9 500-11 000', 4, 'Kraków', 1, 3, 2, '2024-04-05 12:37:43', '2024-04-17 23:59:00', 'primary');
 
 -- --------------------------------------------------------
 
@@ -308,14 +308,16 @@ CREATE TABLE IF NOT EXISTS `login_session` (
   `sign_type` enum('In','Up','','') NOT NULL,
   `start_date` datetime NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `login_session`
 --
 
 INSERT INTO `login_session` (`session_id`, `code`, `email`, `sign_type`, `start_date`) VALUES
-(47, '596609bd86a8a148a3a5163cc1f36bb466ac021469f1', 'tak@gmail.com', 'In', '2024-03-13 18:08:35');
+(47, '596609bd86a8a148a3a5163cc1f36bb466ac021469f1', 'tak@gmail.com', 'In', '2024-03-13 18:08:35'),
+(63, 'f2f05d7fa35a4cd21ef8de5285e50cc0aa26bbafafca', 'xd@gmail.com', 'In', '2024-04-17 18:52:46'),
+(64, '0d275933b544a27573515139ef428233f3cbf0fb9414', 'xd@gmail.comlk', 'Up', '2024-04-17 18:52:51');
 
 -- --------------------------------------------------------
 
@@ -353,14 +355,15 @@ CREATE TABLE IF NOT EXISTS `user_application` (
   PRIMARY KEY (`application_id`),
   KEY `announcement_id` (`announcement_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `user_application`
 --
 
 INSERT INTO `user_application` (`application_id`, `announcement_id`, `user_id`) VALUES
-(6, 2, 6);
+(6, 2, 6),
+(7, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -406,14 +409,14 @@ CREATE TABLE IF NOT EXISTS `user_data` (
   `summary` text DEFAULT NULL,
   PRIMARY KEY (`user_data_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `user_data`
 --
 
 INSERT INTO `user_data` (`user_data_id`, `user_id`, `name`, `surname`, `birth_date`, `telephone_number`, `pfp`, `city`, `currnent_occupation`, `summary`) VALUES
-(18, 6, 'Marcin', 'Gawron', NULL, NULL, 'deafult.jpg', 'Kraków', '', 'essa krutko');
+(18, 6, 'Marcin', 'Gawron', '0000-00-00', '', 'deafult.jpg', 'Kraków', '', 'essa krutko');
 
 -- --------------------------------------------------------
 
@@ -548,14 +551,15 @@ CREATE TABLE IF NOT EXISTS `user_saved` (
   PRIMARY KEY (`saved_id`),
   KEY `announcement_id` (`announcement_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Dumping data for table `user_saved`
 --
 
 INSERT INTO `user_saved` (`saved_id`, `announcement_id`, `user_id`) VALUES
-(1, 2, 6);
+(1, 2, 6),
+(3, 4, 6);
 
 -- --------------------------------------------------------
 

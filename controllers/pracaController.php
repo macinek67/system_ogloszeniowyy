@@ -1,6 +1,7 @@
 <?php
     require_once("models/announcementModel.php");
     require_once("models/companyModel.php");
+    require_once("models/userModel.php");
 
     class pracaController
     {
@@ -8,6 +9,7 @@
         {
             $am = new announcementModel();
             $cm = new companyModel();
+            $um = new userModel();
 
             $announcement = $am->getAnnouncementById($parameters[0]);
             if(count($announcement) == 0)
@@ -16,8 +18,8 @@
                 return;
             }
 
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
 
 
             $companyData = $cm->getCompanyData($announcement[0]["company_id"]);
@@ -134,9 +136,11 @@
         public function glowna($parameters)
         {
             $am = new announcementModel();
+            $um = new userModel();
 
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
 
 
             $headerInfoData["countAnnouncements"] = count($am->countAnnouncements());
@@ -192,6 +196,7 @@
         public $filters = [
             "position_name" => "",
             "city" => "",
+            "company_id" => [],
             "category_id" => [],
             "subcategory_id" => [],
             "position_level_id" => [],
@@ -206,9 +211,10 @@
             $this->setFilters();
 
             $am = new announcementModel();
+            $um = new userModel();
 
-            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", null, true);
-            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", null, true);
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
 
 
             $filters_data["position_levels_list"] = $am->getPositionLevels();

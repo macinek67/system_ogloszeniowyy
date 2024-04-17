@@ -1,24 +1,20 @@
 <header id="headerMobile" class="container-fluid bg-light fixed-bottom d-xl-none d-lg-none">
     <div class="row text-center pt-1">
-        <a href="#" class="col text-dark text-decoration-none">
+        <a href="<?php echo ROOT_URL . "praca/glowna"; ?>" class="col text-dark text-decoration-none">
             <i class="bi bi-house h2"></i>
             <p class="pt-1">Start</p>
         </a>
-        <a href="#" class="col text-dark text-decoration-none">
+        <a href="<?php echo ROOT_URL . "praca/szukaj"; ?>" class="col text-dark text-decoration-none">
             <i class="bi bi-search h2"></i>
             <p class="pt-1">Szukaj</p>
         </a>
-        <a href="#" class="col text-dark text-decoration-none">
+        <a href="<?php echo ROOT_URL . "praca/glowna#strefa_firm"; ?>" class="col text-dark text-decoration-none">
             <i class="bi bi-building h2"></i>
-            <p class="pt-1">Oferty</p>
+            <p class="pt-1">Firmy</p>
         </a>
-        <a href="#" class="col text-dark text-decoration-none">
-            <i class="bi bi-person-circle h2"></i>
-            <p class="pt-1">Konto</p>
-        </a>
-        <a href="#" class="col text-dark text-decoration-none">
-            <i class="bi bi-list h2"></i>
-            <p class="pt-1">Menu</p>
+        <a href="<?php echo ROOT_URL . $data["href"]; ?>" class="col text-dark text-decoration-none">
+            <i class="bi <?php echo $data["icon"]; ?> h2"></i>
+            <p class="pt-1"><?php echo $data["titlePhone"]; ?></p>
         </a>
     </div>
 </header>

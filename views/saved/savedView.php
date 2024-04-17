@@ -42,10 +42,10 @@
                     </div>
                     <div class="overflow-auto">
                         <?php
-                            echo $data["offersList"];
-                            echo $data["offersList"];
-                            echo $data["offersList"];
-                            echo $data["offersList"];
+                            foreach($data["activeList"] as $active)
+                            {
+                                echo $active;
+                            }
                         ?>
                     </div>
                 </div>
@@ -55,10 +55,10 @@
                     </div>
                     <div class="overflow-auto">
                         <?php
-                            echo $data["offersList"];
-                            echo $data["offersList"];
-                            echo $data["offersList"];
-                            echo $data["offersList"];
+                            foreach($data["expiredList"] as $expired)
+                            {
+                                echo $expired;
+                            }
                         ?>
                     </div>
                 </div>

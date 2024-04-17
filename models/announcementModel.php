@@ -248,6 +248,50 @@
             }
             return $categoryData;
         }
+
+        public function getSavedActiveAnnouncements($user_id)
+        {
+            $now = date('Y-m-d H:i:s');
+            $result = $this->connection->query("SELECT * FROM user_saved JOIN announcement USING(announcement_id) JOIN company USING(company_id) WHERE end_date>'$now' AND user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function getSavedExpiredAnnouncements($user_id)
+        {
+            $now = date('Y-m-d H:i:s');
+            $result = $this->connection->query("SELECT * FROM user_saved JOIN announcement USING(announcement_id) JOIN company USING(company_id) WHERE end_date<'$now' AND user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function getAppliedActiveAnnouncements($user_id)
+        {
+            $now = date('Y-m-d H:i:s');
+            $result = $this->connection->query("SELECT * FROM user_application JOIN announcement USING(announcement_id) JOIN company USING(company_id) WHERE end_date>'$now' AND user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
+
+        public function getAppliedExpiredAnnouncements($user_id)
+        {
+            $now = date('Y-m-d H:i:s');
+            $result = $this->connection->query("SELECT * FROM user_application JOIN announcement USING(announcement_id) JOIN company USING(company_id) WHERE end_date<'$now' AND user_id='$user_id'");
+            $tmp = [];
+            while($row = $result->fetch_assoc()) {
+                array_push($tmp, $row);
+            }
+            return $tmp;
+        }
     }
 
 ?>
