@@ -265,7 +265,11 @@
 
         public function getUserPermission()
         {
-            session_start();
+            if(!isset($_SESSION))
+            {
+                session_start();
+            }
+
             $headerData = [];
 
             if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] == 1)

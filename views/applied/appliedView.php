@@ -32,7 +32,7 @@
         <div class="mt-4 bg-white shadow-sm">
             <div class="p-3">
                 <p class="h3 text-primary-emphasis fw-bolder">Zaaplikowane ogłoszenia</p>
-                <small class="h6 text-black fw-bolder">• Przeglądaj ogłoszenia do których wcześniej zaaplikowałeś!</small>
+                <small class="h6 text-secondary">• Przeglądaj ogłoszenia do których wcześniej zaaplikowałeś</small>
             </div>
             <hr>
             <div class="d-md-flex p-3">
@@ -62,10 +62,6 @@
                         ?>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="ps-4 pb-3">
-                <label class="fw-bold text-black align-middle"><i class="h5 bi bi-exclamation-diamond"></i> Wygasłe ogłoszenia usuwane są miesiąc po ich zakończeniu!</label>
             </div>
         </div>
         

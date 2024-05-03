@@ -322,5 +322,36 @@
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
+
+        public function panel_administratora($parameters)
+        {
+            $um = new userModel();
+            session_start();
+
+            
+            if(!isset($_SESSION["user_id"]))
+            {
+                header("Location: " . ROOT_URL . "login/email");
+            }
+            else if($_SESSION["user_role"] == 2)
+            {
+                header("Location: " . ROOT_URL . "konto/profil");
+            }
+
+
+            $data["headerDesktop"] = loader::loadView("headerDesktop", "headerDesktopView", $um->getUserPermission(), true);
+            $data["headerMobile"] = loader::loadView("headerMobile", "headerMobileView", $um->getUserPermission(), true);
+
+
+            $contentContainerData["navigation"] = loader::loadView("adminPanel", "navigationElementView", null, true);
+            $data["contentContainer"] = loader::loadView("adminPanel", "ContentContainerView", $contentContainerData, true);
+
+
+            $data["footer"] = loader::loadView("footer", "footerView", null, true);
+
+
+            loader::loadView("adminPanel", "adminPanelView", $data);
+        }
+
     }
 ?>
