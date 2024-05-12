@@ -29,6 +29,17 @@
             }
             return $companyData;
         }
+
+        public function insertNewCompany()
+        {
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/" . explode("/", $_SERVER['REDIRECT_URL'])[1] . "/application_images/";
+
+            $uploadfile = $path . basename($_FILES['logo']['name']);
+            move_uploaded_file($_FILES['logo']['tmp_name'], $uploadfile);
+            $fileName = basename($_FILES['logo']['name']);
+
+            $result = $this->connection->query("INSERT INTO company(name, short_name, logo, localization_link) VALUES('$_POST[name]', '$_POST[short_name]', '$fileName', '$_POST[localization_link]')");
+        }
     }
     
 ?>

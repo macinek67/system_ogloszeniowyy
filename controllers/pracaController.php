@@ -111,6 +111,12 @@
         {
             session_start();
 
+            if(!isset($_SESSION["user_id"]) || $_SESSION["user_role"] == 1)
+            {
+                header("Location: " . ROOT_URL . "login/email");
+                return;
+            }
+
             $am = new announcementModel();
             $am->insertAppliedAnnouncement($parameters[0]);
 
@@ -121,17 +127,17 @@
         {
             session_start();
 
+            if(!isset($_SESSION["user_id"]) || $_SESSION["user_role"] == 1)
+            {
+                header("Location: " . ROOT_URL . "login/email");
+                return;
+            }
+
             $am = new announcementModel();
             $am->insertSavedAnnouncement($parameters[0]);
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
-
-        // private function tak($message)
-        // {
-        //     $data["messageContent"] = $message;
-        //     loader::loadView("messages", "successfulMessageView", $data);
-        // }
 
         public function glowna($parameters)
         {

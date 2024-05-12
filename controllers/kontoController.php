@@ -1,6 +1,7 @@
 <?php
     require_once("models/userModel.php");
     require_once("models/announcementModel.php");
+    require_once("models/companyModel.php");
 
     class kontoController
     {
@@ -344,6 +345,16 @@
 
 
             $contentContainerData["navigation"] = loader::loadView("adminPanel", "navigationElementView", null, true);
+
+            if($parameters[0] == "firmy" || $parameters[0] == "")
+            {
+                $contentContainerData["content"] = loader::loadView("adminPanel", "copmanyView", null, true);
+            }
+            if($parameters[0] == "kategorie")
+            {
+                $contentContainerData["content"] = loader::loadView("adminPanel", "categoryView", null, true);
+            }
+
             $data["contentContainer"] = loader::loadView("adminPanel", "ContentContainerView", $contentContainerData, true);
 
 
@@ -353,5 +364,31 @@
             loader::loadView("adminPanel", "adminPanelView", $data);
         }
 
+        public function addCompany()
+        {
+            $cm = new companyModel();
+
+            $cm->insertNewCompany();
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function addCategory()
+        {
+            $am = new announcementModel();
+
+            $am->insertNewCategory();
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function addSubcategory()
+        {
+            $am = new announcementModel();
+
+            $am->insertNewSubcategory();
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
     }
 ?>

@@ -97,7 +97,7 @@
                         $query = $query . $type . "='" . $value . "' OR ";
 
                     $query = substr($query, 0, -3);
-                    $query = $query . ") OR ";
+                    $query = $query . ") AND ";
 
                     continue;
                 }
@@ -291,6 +291,22 @@
                 array_push($tmp, $row);
             }
             return $tmp;
+        }
+
+        public function insertNewCategory()
+        {
+            $path = $_SERVER["DOCUMENT_ROOT"] . "/" . explode("/", $_SERVER['REDIRECT_URL'])[1] . "/application_images/";
+
+            $uploadfile = $path . basename($_FILES['image']['name']);
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
+            $fileName = basename($_FILES['image']['name']);
+
+            $result = $this->connection->query("INSERT INTO announcement_category(name, image) VALUES('$_POST[name]', '$fileName')");
+        }
+
+        public function insertNewSubcategory()
+        {
+            $result = $this->connection->query("INSERT INTO announcement_subcategory(category_id, name) VALUES('$_POST[category_id]', '$_POST[name]')");
         }
     }
 
