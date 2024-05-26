@@ -350,9 +350,22 @@
             {
                 $contentContainerData["content"] = loader::loadView("adminPanel", "copmanyView", null, true);
             }
-            if($parameters[0] == "kategorie")
+            else if($parameters[0] == "kategorie")
             {
-                $contentContainerData["content"] = loader::loadView("adminPanel", "categoryView", null, true);
+                $am = new announcementModel();
+                $contentContainerData["content"] = loader::loadView("adminPanel", "categoryView", $am->getCategories(), true);
+            }
+            else if($parameters[0] == "ogloszenia")
+            {
+                $cm = new companyModel();
+                $am = new announcementModel();
+                $addAnnouncementData["company"] = $cm->getCompaniesByPopularity();
+                $addAnnouncementData["category"] = $am->getSubcategories();
+                $addAnnouncementData["positionLevel"] = $am->getPositionLevels();
+                $addAnnouncementData["concractType"] = $am->getContractTypes();
+                $addAnnouncementData["workingTime"] = $am->getWorking_times();
+                $addAnnouncementData["workType"] = $am->getWork_types();
+                $contentContainerData["content"] = loader::loadView("adminPanel", "announcementView", $addAnnouncementData, true);
             }
 
             $data["contentContainer"] = loader::loadView("adminPanel", "ContentContainerView", $contentContainerData, true);
@@ -387,6 +400,15 @@
             $am = new announcementModel();
 
             $am->insertNewSubcategory();
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        public function addAnnouncement()
+        {
+            $am = new announcementModel();
+
+            $am->insertNewAnnouncement();
 
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }

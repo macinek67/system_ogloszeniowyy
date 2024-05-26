@@ -130,6 +130,11 @@
                 {
                     echo "<input type='hidden' name='subcategory_id[]' value='$subcatgory_id'>";
                 }
+
+                foreach($data["company"] as $company_id)
+                {
+                    echo "<input type='hidden' name='company_id[]' value='$company_id'>";
+                }
             ?>
 
             <div class="pt-3 pb-3 ps-4 pe-4 border border-top-0 rounded-bottom-2">

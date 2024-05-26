@@ -256,6 +256,11 @@
             {
                 $filters_data["subcategories"] = $_POST["subcategory_id"];
             }
+            $filters_data["company"] = [];
+            if(isset($_POST["company_id"]))
+            {
+                $filters_data["company"] = $_POST["company_id"];
+            }
             $data["filters"] = loader::loadView("searchPage", "filtersView", $filters_data, true);
 
 

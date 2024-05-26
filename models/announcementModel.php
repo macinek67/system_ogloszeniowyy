@@ -308,6 +308,23 @@
         {
             $result = $this->connection->query("INSERT INTO announcement_subcategory(category_id, name) VALUES('$_POST[category_id]', '$_POST[name]')");
         }
+
+        public function insertNewAnnouncement()
+        {
+            $category_id = null;
+
+            $result = $this->connection->query("SELECT * FROM announcement_subcategory WHERE subcategory_id='$_POST[subcategory_id]'");
+            if($row = $result->fetch_assoc()) {
+                $category_id = $row["category_id"];
+            }
+
+            $start_date = date("Y-m-d H:i:s");
+            $_POST["end_date"] = $_POST["end_date"] . " 23:59:00";
+
+            $result = $this->connection->query("INSERT INTO announcement(`announcement_id`, `company_id`, `localization_link`, `category_id`, `subcategory_id`, `position_name`, `earnings`, `position_level_id`, `city`, `contract_type_id`, `working_time_id`, `work_type_id`, `start_date`, `end_date`, `theme_color`) VALUES(NULL, '$_POST[company_id]', 
+            '$_POST[localization_link]', '$category_id', '$_POST[subcategory_id]', '$_POST[position_name]', '$_POST[earnings]', '$_POST[position_level_id]',
+            '$_POST[city]', '$_POST[contract_type_id]', '$_POST[working_time_id]', '$_POST[work_type_id]', '$start_date', '$_POST[end_date]', '$_POST[theme_color]')");
+        }
     }
 
 ?>
